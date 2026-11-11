@@ -31,7 +31,7 @@
     {
       "path": "Chinese-Version/PACKAGE_MANIFEST.json",
       "bytes": 26942,
-      "sha256": "d8b9fbc0d74ec6d98c6655edaf88daa1a561d7510eddd1022c205042304b592b"
+      "sha256": "48d88f0016388e1486c3eb109f85aed9bc6f6c8575733b262509400bbf8937c2"
     },
     {
       "path": "Chinese-Version/PROJECT_SPEC.md",
@@ -40,8 +40,8 @@
     },
     {
       "path": "Chinese-Version/README.md",
-      "bytes": 5347,
-      "sha256": "febb40f19355c6469c2f388aa36775fabad33bb14ccde295cd6718b09f1113ca"
+      "bytes": 3718,
+      "sha256": "ba8327371fc99eade906629e1f024e23a8a1f7023ab4eeb8006de32c53f049af"
     },
     {
       "path": "Chinese-Version/RELEASE_NOTES.md",
@@ -785,8 +785,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5973,
-      "sha256": "115cdb432d4d13ca0e4f948c94daa4c098683c6d199a4460838e136d2437c8c4"
+      "bytes": 4046,
+      "sha256": "21686840cdb57ded3b654dbf75c375759f72db8359b09b9b82be12f8105da44b"
     },
     {
       "path": "RELEASE_NOTES.md",
@@ -940,8 +940,8 @@
     },
     {
       "path": "locales/zh-CN/README.md",
-      "bytes": 5347,
-      "sha256": "febb40f19355c6469c2f388aa36775fabad33bb14ccde295cd6718b09f1113ca"
+      "bytes": 3718,
+      "sha256": "ba8327371fc99eade906629e1f024e23a8a1f7023ab4eeb8006de32c53f049af"
     },
     {
       "path": "locales/zh-CN/TRIAL_FEEDBACK.md",
