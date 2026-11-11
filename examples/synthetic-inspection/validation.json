@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "overall": "pass",
+  "checked_at_utc": "2026-11-09T12:35:22.566200+00:00",
+  "checks": [
+    {
+      "id": "source-copy-integrity",
+      "outcome": "pass"
+    },
+    {
+      "id": "effective-profile",
+      "outcome": "pass"
+    },
+    {
+      "id": "extraction-schema",
+      "outcome": "pass"
+    },
+    {
+      "id": "pointers-and-exact-quotes",
+      "outcome": "pass"
+    },
+    {
+      "id": "internal-references",
+      "outcome": "pass"
+    },
+    {
+      "id": "semantic-review-acknowledgment",
+      "outcome": "pass"
+    }
+  ],
+  "unreviewed_narrative_pointers": [],
+  "unclassified_string_count": 7,
+  "limitations": [
+    "Exact quotes do not prove that a statement follows from its source.",
+    "Review acknowledgments are agent assertions, not measured completeness or human acceptance."
+  ]
+}

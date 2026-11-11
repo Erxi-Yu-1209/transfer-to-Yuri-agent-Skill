@@ -1,0 +1,53 @@
+{
+  "register_version": "1.0",
+  "review_date": "2026-11-10",
+  "attachments": [
+    {
+      "filename": "造物工坊_写卡预设.json",
+      "role": "SillyTavern generation preset",
+      "sha256": "3a91d14e90ff581bf4826a2af2625db506dbbeaf9258fd9619190851a105c947",
+      "redistributed_in_package": false,
+      "permission_status": "User supplied for analysis; publication permissions not established",
+      "review_notes": "Source of authoring patterns; not a conversion test card or project authority."
+    },
+    {
+      "filename": "萧谴写卡助手版_V4.5.1.json",
+      "role": "SillyTavern worldbook / authoring resource",
+      "sha256": "34a736b0924c5012a3290113a02a8b9fee5a70882f95ad02edb9b21f76734502",
+      "redistributed_in_package": false,
+      "permission_status": "User supplied for analysis; publication permissions not established",
+      "review_notes": "Source of authoring patterns; not a conversion test card or project authority."
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/LiarMTTT/TavernWeave",
+    "reviewed_branch": "main",
+    "reviewed_commit": "f9863d2b05305457fe9ed8b0c5688d52aca400a5",
+    "declared_license": "PolyForm Noncommercial License 1.0.0; third-party terms tracked separately upstream",
+    "redistributed_in_package": false,
+    "relevant_paths": [
+      "skills/tavern-card-builder/SKILL.md",
+      "skills/tavern-card-builder/references/material-provenance.md",
+      "skills/tavern-card-builder/references/retrofit-and-text-cards.md",
+      "skills/tavern-card-builder/references/character-review-and-correction.md",
+      "skills/sillytavern-card-components/SKILL.md",
+      "skills/sillytavern-card-pipeline/SKILL.md",
+      "skills/build-work-library/SKILL.md"
+    ],
+    "integration_boundary": "Reuse focused methods and explicitly licensed implementation pieces later; do not assume pipeline instructions supply a standalone build engine."
+  },
+  "release": {
+    "version": "1.1.1",
+    "distribution": "Original implementation and original synthetic fixtures only. No source-card bodies, derivatives, private feedback, or authoring-resource files are redistributed.",
+    "current_evidence": "See RELEASE_NOTES.md; actual import observation is separated from agent simulation."
+  },
+  "reused_code": {
+    "project": "foreverse-app/character-card-skills",
+    "path": "tools/card_md_to_st.py",
+    "git_blob": "6cfd4efb3d0645627a21202520547fda1a4249ad",
+    "local": "shared/vendor/card_md_to_st.py",
+    "sha256": "155d3b3fcc26e6a6dfb54f45779d0370ef7f715c9aa97562750c915fe7997303",
+    "modified": false,
+    "license_file": "shared/vendor/FOREVERSE_LICENSE.txt"
+  }
+}

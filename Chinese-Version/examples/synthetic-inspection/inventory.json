@@ -1,0 +1,270 @@
+{
+  "schema_version": "1.0",
+  "adapter_version": "0.2.0-inspection",
+  "format": {
+    "kind": "chara_card_v2",
+    "candidates": [
+      "chara_card_v2"
+    ],
+    "card_root": "/data",
+    "declared_spec": "chara_card_v2"
+  },
+  "structural_inventory": "complete",
+  "semantic_review": "pending",
+  "conversion_implemented": false,
+  "regions": [
+    {
+      "pointer": "/spec",
+      "role": "unclassified",
+      "value_type": "str",
+      "sha256": "0187a9a0484286ed83e18490e9763dd9d9d9fa7f52b68d454dd41aad997f1098",
+      "flags": [],
+      "characters": 13
+    },
+    {
+      "pointer": "/spec_version",
+      "role": "unclassified",
+      "value_type": "str",
+      "sha256": "86169bcf42397928e1828b0a8e09ab69037ac05474b33486513c2fea65908565",
+      "flags": [],
+      "characters": 3
+    },
+    {
+      "pointer": "/data/name",
+      "role": "narrative_candidate",
+      "value_type": "str",
+      "sha256": "928e10ecaab50046cfa1fabace7245e0b86aabbc4f1dcee25c8048f740cfde54",
+      "flags": [],
+      "characters": 4
+    },
+    {
+      "pointer": "/data/description",
+      "role": "narrative_candidate",
+      "value_type": "str",
+      "sha256": "9ae23fc3341551971d7e4502d126e3c5b92bc5292c735e06c7ab6c2dffe1c66f",
+      "flags": [
+        "technical_field_heuristic"
+      ],
+      "characters": 43
+    },
+    {
+      "pointer": "/data/personality",
+      "role": "narrative_candidate",
+      "value_type": "str",
+      "sha256": "5752e2a9ed154ec6f9fdf1f19dddf5586232ea7469dd0c8c86148f489eb4abdd",
+      "flags": [],
+      "characters": 19
+    },
+    {
+      "pointer": "/data/scenario",
+      "role": "narrative_candidate",
+      "value_type": "str",
+      "sha256": "004f58269907d1ab55344f7a83a4de39c8d0b93649a0d2e9cbab0b75285ae239",
+      "flags": [],
+      "characters": 34
+    },
+    {
+      "pointer": "/data/first_mes",
+      "role": "narrative_candidate",
+      "value_type": "str",
+      "sha256": "ebe13e8bdde8da31dd154df6d4f650d2a35daac69d1c3ead1b2fca6f2d240049",
+      "flags": [],
+      "characters": 24
+    },
+    {
+      "pointer": "/data/mes_example",
+      "role": "narrative_candidate",
+      "value_type": "str",
+      "sha256": "b804882c801695465d425863f532200fbf505e379fd23f80761ebf1ded62bbf1",
+      "flags": [
+        "template_or_macro"
+      ],
+      "characters": 34
+    },
+    {
+      "pointer": "/data/alternate_greetings/0",
+      "role": "narrative_candidate",
+      "value_type": "str",
+      "sha256": "845b59d6ab6629b08fe0933ea0b235e5e03c132a45f08becd628c7eb9851952f",
+      "flags": [],
+      "characters": 23
+    },
+    {
+      "pointer": "/data/character_book/name",
+      "role": "unclassified",
+      "value_type": "str",
+      "sha256": "4b43f387fd992c6afa0ce0cb36680010954a24d2e5bfbee13e6133a95295d72d",
+      "flags": [],
+      "characters": 2
+    },
+    {
+      "pointer": "/data/character_book/entries/0/id",
+      "role": "unclassified",
+      "value_type": "int",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "flags": [],
+      "worldbook_entry": "/data/character_book/entries/0"
+    },
+    {
+      "pointer": "/data/character_book/entries/0/keys/0",
+      "role": "unclassified",
+      "value_type": "str",
+      "sha256": "df7ba318f15d1f898fcda1a91055f71522732705d979b7d8aa2fbdbb5484c686",
+      "flags": [],
+      "characters": 2,
+      "worldbook_entry": "/data/character_book/entries/0"
+    },
+    {
+      "pointer": "/data/character_book/entries/0/enabled",
+      "role": "unclassified",
+      "value_type": "bool",
+      "sha256": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "flags": [],
+      "worldbook_entry": "/data/character_book/entries/0"
+    },
+    {
+      "pointer": "/data/character_book/entries/0/content",
+      "role": "narrative_candidate",
+      "value_type": "str",
+      "sha256": "3f93e1531bc4333fe8e64d5d2f531ce886a445d15573a189898d8589438e3a0a",
+      "flags": [],
+      "characters": 80,
+      "worldbook_entry": "/data/character_book/entries/0"
+    },
+    {
+      "pointer": "/data/character_book/entries/1/id",
+      "role": "unclassified",
+      "value_type": "int",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "flags": [],
+      "worldbook_entry": "/data/character_book/entries/1"
+    },
+    {
+      "pointer": "/data/character_book/entries/1/keys/0",
+      "role": "unclassified",
+      "value_type": "str",
+      "sha256": "2e4a509315127eec1a4919f47f8464bc58932763af84a457ad6a34183d2f5659",
+      "flags": [],
+      "characters": 2,
+      "worldbook_entry": "/data/character_book/entries/1"
+    },
+    {
+      "pointer": "/data/character_book/entries/1/enabled",
+      "role": "unclassified",
+      "value_type": "bool",
+      "sha256": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "flags": [],
+      "worldbook_entry": "/data/character_book/entries/1"
+    },
+    {
+      "pointer": "/data/character_book/entries/1/content",
+      "role": "narrative_candidate",
+      "value_type": "str",
+      "sha256": "2ba1099e8a101f4be1dcbd5edfaaf060f30a57707562a42b1286065716438d1b",
+      "flags": [],
+      "characters": 35,
+      "worldbook_entry": "/data/character_book/entries/1"
+    },
+    {
+      "pointer": "/data/character_book/entries/2/id",
+      "role": "unclassified",
+      "value_type": "int",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "flags": [],
+      "worldbook_entry": "/data/character_book/entries/2"
+    },
+    {
+      "pointer": "/data/character_book/entries/2/keys/0",
+      "role": "unclassified",
+      "value_type": "str",
+      "sha256": "8953960921ef68872e0779f733b5cf3ce9834970144a8d8f0a203b0e7a80ac70",
+      "flags": [],
+      "characters": 2,
+      "worldbook_entry": "/data/character_book/entries/2"
+    },
+    {
+      "pointer": "/data/character_book/entries/2/enabled",
+      "role": "unclassified",
+      "value_type": "bool",
+      "sha256": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "flags": [],
+      "worldbook_entry": "/data/character_book/entries/2"
+    },
+    {
+      "pointer": "/data/character_book/entries/2/content",
+      "role": "narrative_candidate",
+      "value_type": "str",
+      "sha256": "1b2b700d9fb64c470251e84185c1de37fb731cc5900f12df4508deb860249b8b",
+      "flags": [],
+      "characters": 30,
+      "worldbook_entry": "/data/character_book/entries/2"
+    },
+    {
+      "pointer": "/data/extensions/unknown_runtime/scripts/0/content",
+      "role": "technical_candidate",
+      "value_type": "str",
+      "sha256": "bb20f7310c18c8975d5062f00d40c737319b075cc38ca8c72fe730d11225254e",
+      "flags": [
+        "technical_field_heuristic"
+      ],
+      "characters": 36
+    },
+    {
+      "pointer": "/data/extensions/opaque/a~1b~0c",
+      "role": "unclassified",
+      "value_type": "str",
+      "sha256": "30977e1cbb5429829de17034bd15defa84f2cb1b7e94f8d5b8209742e72c44ca",
+      "flags": [],
+      "characters": 12
+    }
+  ],
+  "narrative_candidate_pointers": [
+    "/data/name",
+    "/data/description",
+    "/data/personality",
+    "/data/scenario",
+    "/data/first_mes",
+    "/data/mes_example",
+    "/data/alternate_greetings/0",
+    "/data/character_book/entries/0/content",
+    "/data/character_book/entries/1/content",
+    "/data/character_book/entries/2/content"
+  ],
+  "worldbook_entries": {
+    "/data/character_book/entries/0": {
+      "state": "enabled",
+      "metadata": {
+        "id": 1,
+        "keys": [
+          "季遥"
+        ],
+        "enabled": true
+      }
+    },
+    "/data/character_book/entries/1": {
+      "state": "disabled",
+      "metadata": {
+        "id": 2,
+        "keys": [
+          "陈伯"
+        ],
+        "enabled": false
+      }
+    },
+    "/data/character_book/entries/2": {
+      "state": "enabled",
+      "metadata": {
+        "id": 3,
+        "keys": [
+          "误差"
+        ],
+        "enabled": true
+      }
+    }
+  },
+  "dependencies": [],
+  "warnings": [
+    "Technical/template markers are heuristics; no embedded code was executed or fully interpreted."
+  ],
+  "unclassified_string_count": 7
+}

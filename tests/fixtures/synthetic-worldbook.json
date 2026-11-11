@@ -1,0 +1,12 @@
+{
+  "entries": {
+    "a/b~c": {
+      "uid": 7,
+      "disable": true,
+      "key": [
+        "塔楼"
+      ],
+      "content": "塔楼只在涨潮时开放。"
+    }
+  }
+}

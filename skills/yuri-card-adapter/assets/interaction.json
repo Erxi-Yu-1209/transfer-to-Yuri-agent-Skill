@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "locale": "en",
+  "default_marker": " (current default)",
+  "answer_prompt": "Choose a number (Enter keeps the current value): ",
+  "invalid_answer": "Enter one of the listed numbers.",
+  "custom_prompt": "Enter your custom character criteria: ",
+  "exists_error": "Profile already exists; choose a new path to preserve saved settings.",
+  "saved": "Saved profile: {path}. Reuse it across cards without repeating setup.",
+  "error": "Profile not saved: {detail}",
+  "questions": [
+    {
+      "pointer": "/definition/womanhood_policy",
+      "prompt": "Which characters qualify as women under this profile?",
+      "options": [
+        {
+          "value": "author_defined_inclusive",
+          "label": "Author-defined women, including virtual and nonhuman characters"
+        },
+        {
+          "value": "human_explicitly_female",
+          "label": "Human characters explicitly described as female"
+        },
+        {
+          "value": "custom",
+          "label": "Use my own criteria"
+        }
+      ]
+    },
+    {
+      "pointer": "/transformation/scope",
+      "prompt": "Which characters should be transformed by default?",
+      "options": [
+        {
+          "value": "main_cast",
+          "label": "Main cast; preserve background characters"
+        },
+        {
+          "value": "named_characters",
+          "label": "Only characters selected for each card"
+        },
+        {
+          "value": "entire_cast",
+          "label": "Entire cast, with explicit exceptions"
+        }
+      ]
+    },
+    {
+      "pointer": "/relationships/outcome_policy",
+      "prompt": "How freely may interpersonal relationships change?",
+      "options": [
+        {
+          "value": "rederive_if_causal",
+          "label": "Allow changes supported by altered circumstances"
+        },
+        {
+          "value": "preserve_outcomes",
+          "label": "Preserve established dynamics and outcomes"
+        },
+        {
+          "value": "explicit_pairing_targets",
+          "label": "Adapt toward pairings specified for each card"
+        }
+      ]
+    }
+  ]
+}

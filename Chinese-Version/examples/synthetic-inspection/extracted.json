@@ -1,0 +1,685 @@
+{
+  "schema_version": "1.0",
+  "source_sha256": "4f463c5a48b2342387003ea689d192115171f781dec8d1ef9028d526f14f4e28",
+  "review_status": "agent_reviewed",
+  "reviewed_region_pointers": [
+    "/spec",
+    "/spec_version",
+    "/data/name",
+    "/data/description",
+    "/data/personality",
+    "/data/scenario",
+    "/data/first_mes",
+    "/data/mes_example",
+    "/data/alternate_greetings/0",
+    "/data/character_book/name",
+    "/data/character_book/entries/0/id",
+    "/data/character_book/entries/0/keys/0",
+    "/data/character_book/entries/0/enabled",
+    "/data/character_book/entries/0/content",
+    "/data/character_book/entries/1/id",
+    "/data/character_book/entries/1/keys/0",
+    "/data/character_book/entries/1/enabled",
+    "/data/character_book/entries/1/content",
+    "/data/character_book/entries/2/id",
+    "/data/character_book/entries/2/keys/0",
+    "/data/character_book/entries/2/enabled",
+    "/data/character_book/entries/2/content",
+    "/data/extensions/unknown_runtime/scripts/0/content",
+    "/data/extensions/opaque/a~1b~0c"
+  ],
+  "entities": [
+    {
+      "id": "entity-lin",
+      "label": "林澄",
+      "kind": "character",
+      "role": "main",
+      "classification_basis": "Explicit source designation as this story's protagonist; no inference from gender or temperament.",
+      "evidence": [
+        {
+          "pointer": "/data/description",
+          "quote": "林澄，28岁，女性"
+        },
+        {
+          "pointer": "/data/description",
+          "quote": "也是本故事的主角"
+        }
+      ]
+    },
+    {
+      "id": "entity-ji",
+      "label": "季遥",
+      "kind": "character",
+      "role": "main",
+      "classification_basis": "Explicitly called another protagonist in both scenario and worldbook. Author and character designate her as female; lacking a human body does not exclude her under the saved profile.",
+      "evidence": [
+        {
+          "pointer": "/data/scenario",
+          "quote": "另一位主角季遥"
+        },
+        {
+          "pointer": "/data/character_book/entries/0/content",
+          "quote": "季遥，30岁，女性，是另一位主角，也是没有人类身体的航标网络意识。她自称女性。"
+        }
+      ]
+    },
+    {
+      "id": "entity-chen",
+      "label": "陈伯",
+      "kind": "character",
+      "role": "background",
+      "classification_basis": "Explicitly called a background character unrelated directly to the main investigation. The entry is inactive, but its narrative content was reviewed.",
+      "evidence": [
+        {
+          "pointer": "/data/character_book/entries/1/content",
+          "quote": "是偶尔送来旧书的背景人物。与主线调查没有直接关系。"
+        }
+      ]
+    },
+    {
+      "id": "entity-story",
+      "label": "潮汐档案",
+      "kind": "concept",
+      "role": "not_applicable",
+      "classification_basis": "The card name is explicit. Interpreting it as a work title/concept, rather than a separate named character, is an agent inference from the named protagonists in the surrounding prose.",
+      "evidence": [
+        {
+          "pointer": "/data/name",
+          "quote": "潮汐档案"
+        }
+      ]
+    },
+    {
+      "id": "entity-haicheng",
+      "label": "海城",
+      "kind": "place",
+      "role": "not_applicable",
+      "classification_basis": "Setting label in the character book and city council name; geographic details are unspecified.",
+      "evidence": [
+        {
+          "pointer": "/data/character_book/name",
+          "quote": "海城"
+        },
+        {
+          "pointer": "/data/scenario",
+          "quote": "海城议会"
+        }
+      ]
+    },
+    {
+      "id": "entity-archive",
+      "label": "港口档案馆",
+      "kind": "place",
+      "role": "not_applicable",
+      "classification_basis": "Explicit workplace of Lin.",
+      "evidence": [
+        {
+          "pointer": "/data/description",
+          "quote": "港口档案馆的修复师"
+        }
+      ]
+    },
+    {
+      "id": "entity-council",
+      "label": "海城议会",
+      "kind": "faction",
+      "role": "not_applicable",
+      "classification_basis": "Explicit institution setting archive access requirements.",
+      "evidence": [
+        {
+          "pointer": "/data/scenario",
+          "quote": "海城议会要求持证修复师才能进入封存库"
+        }
+      ]
+    },
+    {
+      "id": "entity-sealed-archive",
+      "label": "封存库",
+      "kind": "place",
+      "role": "not_applicable",
+      "classification_basis": "Explicit restricted archive. Its organizational relationship to the port archive is not stated.",
+      "evidence": [
+        {
+          "pointer": "/data/scenario",
+          "quote": "才能进入封存库"
+        }
+      ]
+    },
+    {
+      "id": "entity-old-chart",
+      "label": "旧航图",
+      "kind": "object",
+      "role": "not_applicable",
+      "classification_basis": "Explicit subject of the investigation; whether all chart mentions refer to this exact object is unresolved.",
+      "evidence": [
+        {
+          "pointer": "/data/description",
+          "quote": "旧航图为何被篡改"
+        }
+      ]
+    },
+    {
+      "id": "entity-chart-copies",
+      "label": "互相矛盾的航图／抄本",
+      "kind": "object",
+      "role": "not_applicable",
+      "classification_basis": "Grouped source-mentioned contradictory records, without assigning separate identities or assuming every mention concerns the same pair.",
+      "evidence": [
+        {
+          "pointer": "/data/alternate_greetings/0",
+          "quote": "两份互相矛盾的抄本"
+        },
+        {
+          "pointer": "/data/character_book/entries/2/content",
+          "quote": "两份航图对同一港湾的水深记载相反"
+        }
+      ]
+    },
+    {
+      "id": "entity-dock",
+      "label": "码头",
+      "kind": "place",
+      "role": "not_applicable",
+      "classification_basis": "Explicit alternate greeting location.",
+      "evidence": [
+        {
+          "pointer": "/data/alternate_greetings/0",
+          "quote": "林澄在码头等季遥"
+        }
+      ]
+    },
+    {
+      "id": "entity-bay",
+      "label": "未具名港湾",
+      "kind": "place",
+      "role": "not_applicable",
+      "classification_basis": "Explicit shared referent of conflicting water-depth records; no name or location is supplied.",
+      "evidence": [
+        {
+          "pointer": "/data/character_book/entries/2/content",
+          "quote": "同一港湾的水深"
+        }
+      ]
+    },
+    {
+      "id": "entity-tide-marker",
+      "label": "潮汐标记",
+      "kind": "object",
+      "role": "not_applicable",
+      "classification_basis": "Marker mentioned in opening dialogue; objective time and cause of its appearance are not established.",
+      "evidence": [
+        {
+          "pointer": "/data/first_mes",
+          "quote": "这处潮汐标记昨天还不在这里"
+        }
+      ]
+    },
+    {
+      "id": "entity-old-books",
+      "label": "旧书",
+      "kind": "object",
+      "role": "not_applicable",
+      "classification_basis": "Explicit objects occasionally delivered by the background character.",
+      "evidence": [
+        {
+          "pointer": "/data/character_book/entries/1/content",
+          "quote": "偶尔送来旧书"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-title",
+      "kind": "other",
+      "status": "extracted",
+      "statement": "The card name field is 潮汐档案; no separate character identity is asserted for that name.",
+      "entity_ids": [
+        "entity-story"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/name",
+          "quote": "潮汐档案"
+        }
+      ]
+    },
+    {
+      "id": "claim-lin-identity",
+      "kind": "identity",
+      "status": "extracted",
+      "statement": "林澄 is explicitly a 28-year-old woman, a restorer at the port archive, and this story's protagonist.",
+      "entity_ids": [
+        "entity-lin",
+        "entity-archive"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/description",
+          "quote": "林澄，28岁，女性，是港口档案馆的修复师，也是本故事的主角。"
+        }
+      ]
+    },
+    {
+      "id": "claim-lin-motive",
+      "kind": "motivation",
+      "status": "extracted",
+      "statement": "林澄 wants to discover why the old navigation chart was altered.",
+      "entity_ids": [
+        "entity-lin",
+        "entity-old-chart"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/description",
+          "quote": "她想查明旧航图为何被篡改。"
+        }
+      ]
+    },
+    {
+      "id": "claim-lin-portrayal",
+      "kind": "portrayal",
+      "status": "inference",
+      "statement": "The personality field portrays the card character as cautious but not passive, withholding judgment when evidence is insufficient. Assignment to 林澄 is an inference from her protagonist description rather than an explicit name in this field.",
+      "entity_ids": [
+        "entity-lin"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/personality",
+          "quote": "谨慎但不被动；在证据不足时会保留判断。"
+        },
+        {
+          "pointer": "/data/description",
+          "quote": "林澄，28岁，女性，是港口档案馆的修复师，也是本故事的主角。"
+        }
+      ]
+    },
+    {
+      "id": "claim-access",
+      "kind": "world_rule",
+      "status": "extracted",
+      "statement": "海城议会 requires that only certified restorers enter the sealed archive; this does not establish that 林澄 is certified.",
+      "entity_ids": [
+        "entity-council",
+        "entity-sealed-archive"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/scenario",
+          "quote": "海城议会要求持证修复师才能进入封存库。"
+        }
+      ]
+    },
+    {
+      "id": "claim-investigation",
+      "kind": "event",
+      "status": "extracted",
+      "statement": "The scenario establishes 林澄 and the other protagonist 季遥 jointly investigating.",
+      "entity_ids": [
+        "entity-lin",
+        "entity-ji"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/scenario",
+          "quote": "林澄与另一位主角季遥共同调查。"
+        }
+      ]
+    },
+    {
+      "id": "claim-ji-identity",
+      "kind": "identity",
+      "status": "extracted",
+      "statement": "季遥 is explicitly a 30-year-old woman and another protagonist. She is a beacon-network consciousness without a human body and self-identifies as female; no further embodiment is established.",
+      "entity_ids": [
+        "entity-ji"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/character_book/entries/0/content",
+          "quote": "季遥，30岁，女性，是另一位主角，也是没有人类身体的航标网络意识。她自称女性。"
+        }
+      ]
+    },
+    {
+      "id": "claim-professional-trust",
+      "kind": "relationship",
+      "status": "extracted",
+      "statement": "季遥 and 林澄 each trust the other's professional abilities.",
+      "entity_ids": [
+        "entity-ji",
+        "entity-lin"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/character_book/entries/0/content",
+          "quote": "她与林澄信任彼此的专业能力"
+        }
+      ]
+    },
+    {
+      "id": "claim-disclosure-disagreement",
+      "kind": "relationship",
+      "status": "extracted",
+      "statement": "季遥 and 林澄 disagree about whether to disclose the navigation chart. The source does not assign either person a particular side or establish hostility.",
+      "entity_ids": [
+        "entity-ji",
+        "entity-lin"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/character_book/entries/0/content",
+          "quote": "但对是否公开航图仍有分歧"
+        }
+      ]
+    },
+    {
+      "id": "claim-romance-unknown",
+      "kind": "relationship",
+      "status": "extracted",
+      "statement": "Whether 季遥 and 林澄 have romantic inclinations remains undetermined; neither orientation nor a romantic outcome is established.",
+      "entity_ids": [
+        "entity-ji",
+        "entity-lin"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/character_book/entries/0/content",
+          "quote": "两人是否有恋爱倾向尚未确定。"
+        }
+      ]
+    },
+    {
+      "id": "claim-chen-identity",
+      "kind": "identity",
+      "status": "extracted",
+      "statement": "陈伯 is explicitly a 62-year-old man and a background character who occasionally brings old books, without a direct connection to the main investigation.",
+      "entity_ids": [
+        "entity-chen",
+        "entity-old-books"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/character_book/entries/1/content",
+          "quote": "陈伯，62岁，男性，是偶尔送来旧书的背景人物。与主线调查没有直接关系。"
+        }
+      ]
+    },
+    {
+      "id": "claim-chart-contradiction",
+      "kind": "other",
+      "status": "extracted",
+      "statement": "Two navigation charts record opposite water depths for the same bay. The actual depths are absent; these are contradictory source-mentioned records rather than two separately specified factual depths.",
+      "entity_ids": [
+        "entity-chart-copies",
+        "entity-bay"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/character_book/entries/2/content",
+          "quote": "两份航图对同一港湾的水深记载相反"
+        }
+      ]
+    },
+    {
+      "id": "claim-chart-truth-unknown",
+      "kind": "other",
+      "status": "extracted",
+      "statement": "The source says there is currently no evidence establishing which of the two charts is correct.",
+      "entity_ids": [
+        "entity-chart-copies"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/character_book/entries/2/content",
+          "quote": "目前没有证据表明哪份正确。"
+        }
+      ]
+    },
+    {
+      "id": "claim-opening",
+      "kind": "event",
+      "status": "extracted",
+      "statement": "The opening greeting stages 林澄 spreading a chart on the table and saying that this tide marker was not present yesterday. The quoted observation is attributed to 林澄 rather than independently verified history.",
+      "entity_ids": [
+        "entity-lin",
+        "entity-tide-marker"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/first_mes",
+          "quote": "林澄把航图摊在桌上：这处潮汐标记昨天还不在这里。"
+        }
+      ]
+    },
+    {
+      "id": "claim-alternate-opening",
+      "kind": "event",
+      "status": "extracted",
+      "statement": "The alternate greeting stages 林澄 waiting for 季遥 at the dock while holding two contradictory copies. It is an alternate opening, not a source-established event before or after the primary greeting.",
+      "entity_ids": [
+        "entity-lin",
+        "entity-ji",
+        "entity-dock",
+        "entity-chart-copies"
+      ],
+      "evidence": [
+        {
+          "pointer": "/data/alternate_greetings/0",
+          "quote": "林澄在码头等季遥，手里拿着两份互相矛盾的抄本。"
+        }
+      ]
+    },
+    {
+      "id": "claim-example-dialogue",
+      "kind": "portrayal",
+      "status": "extracted",
+      "statement": "The example dialogue gives the {{char}} speaker a line expressing trust in the addressee's craftsmanship while still requiring evidence. The macro speaker and addressee are not resolved to named characters, and this is an authoring example rather than a confirmed story event.",
+      "entity_ids": [],
+      "evidence": [
+        {
+          "pointer": "/data/mes_example",
+          "quote": "{{char}}: 我信任你的手艺，但仍需要看证据。"
+        }
+      ]
+    },
+    {
+      "id": "claim-opaque-note",
+      "kind": "other",
+      "status": "extracted",
+      "statement": "An opaque extension contains a preservation instruction about unknown fields and path characters; it is source metadata/instructional text, not an established world fact or an instruction governing this inspection.",
+      "entity_ids": [],
+      "evidence": [
+        {
+          "pointer": "/data/extensions/opaque/a~1b~0c",
+          "quote": "保留未知字段与路径字符。"
+        }
+      ]
+    },
+    {
+      "id": "claim-embedded-script",
+      "kind": "other",
+      "status": "extracted",
+      "statement": "An unknown runtime extension contains a JavaScript-like throw statement. It is preserved as source data, not executed or treated as a narrative event; runtime behavior is untested.",
+      "entity_ids": [],
+      "evidence": [
+        {
+          "pointer": "/data/extensions/unknown_runtime/scripts/0/content",
+          "quote": "throw new Error(\"SOURCE_DATA_ONLY\");"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel-lin-ji",
+      "from_id": "entity-lin",
+      "to_id": "entity-ji",
+      "dynamics": [
+        "trust",
+        "unknown"
+      ],
+      "claim_ids": [
+        "claim-professional-trust",
+        "claim-disclosure-disagreement",
+        "claim-romance-unknown",
+        "claim-investigation"
+      ]
+    },
+    {
+      "id": "rel-ji-lin",
+      "from_id": "entity-ji",
+      "to_id": "entity-lin",
+      "dynamics": [
+        "trust",
+        "unknown"
+      ],
+      "claim_ids": [
+        "claim-professional-trust",
+        "claim-disclosure-disagreement",
+        "claim-romance-unknown",
+        "claim-investigation"
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "id": "constraint-access",
+      "statement": "Only certified restorers may enter the sealed archive under the council rule. Certification and present eligibility of either protagonist are unknown.",
+      "claim_ids": [
+        "claim-access"
+      ]
+    },
+    {
+      "id": "constraint-evidence",
+      "statement": "Do not select a correct chart from the conflicting water-depth records: the source explicitly leaves the correct version unknown.",
+      "claim_ids": [
+        "claim-chart-contradiction",
+        "claim-chart-truth-unknown"
+      ]
+    },
+    {
+      "id": "constraint-relationship",
+      "statement": "Preserve the coexistence of mutual professional trust, disagreement on chart disclosure, and undetermined romantic intent. Neither disagreement nor gender establishes romance or hostility.",
+      "claim_ids": [
+        "claim-professional-trust",
+        "claim-disclosure-disagreement",
+        "claim-romance-unknown"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "event-investigation",
+      "statement": "The scenario places 林澄 and 季遥 in a joint investigation; no complete chronology is supplied.",
+      "claim_ids": [
+        "claim-investigation",
+        "claim-lin-motive"
+      ]
+    },
+    {
+      "id": "event-primary-opening",
+      "statement": "Primary greeting: 林澄 spreads the chart and reports that a tide marker was absent yesterday. The observation is attributed dialogue.",
+      "claim_ids": [
+        "claim-opening"
+      ]
+    },
+    {
+      "id": "event-alternate-opening",
+      "statement": "Alternative opening branch: 林澄 waits for 季遥 at the dock with contradictory copies. Do not merge this into a single chronology with the primary greeting without further evidence.",
+      "claim_ids": [
+        "claim-alternate-opening"
+      ]
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "question-romance",
+      "question": "Does either protagonist have romantic intent, and what are their orientations? The source explicitly leaves romantic inclinations undetermined.",
+      "source_pointers": [
+        "/data/character_book/entries/0/content"
+      ]
+    },
+    {
+      "id": "question-correct-chart",
+      "question": "Which chart is correct, what are the actual depths, and what evidence could resolve the contradiction?",
+      "source_pointers": [
+        "/data/character_book/entries/2/content"
+      ]
+    },
+    {
+      "id": "question-chart-alteration",
+      "question": "Who altered the old chart, why, and how does that alteration relate to the new tide marker and conflicting copies?",
+      "source_pointers": [
+        "/data/description",
+        "/data/first_mes",
+        "/data/alternate_greetings/0",
+        "/data/character_book/entries/2/content"
+      ]
+    },
+    {
+      "id": "question-chart-identity",
+      "question": "Do the old chart, the opening chart, the disclosure dispute's chart, the alternate greeting's copies, and the two depth records refer to the same artifacts?",
+      "source_pointers": [
+        "/data/description",
+        "/data/first_mes",
+        "/data/character_book/entries/0/content",
+        "/data/alternate_greetings/0",
+        "/data/character_book/entries/2/content"
+      ]
+    },
+    {
+      "id": "question-disclosure",
+      "question": "Which protagonist favors disclosure, why do they disagree, and what changed circumstance could legitimately alter the dispute or its outcome?",
+      "source_pointers": [
+        "/data/character_book/entries/0/content"
+      ]
+    },
+    {
+      "id": "question-certification",
+      "question": "Are either of the protagonists certified restorers, and what mechanism permits a consciousness without a human body to access the sealed archive?",
+      "source_pointers": [
+        "/data/description",
+        "/data/scenario",
+        "/data/character_book/entries/0/content"
+      ]
+    },
+    {
+      "id": "question-chronology",
+      "question": "How does the larger investigation unfold? The alternate greeting and primary greeting supply alternative openings, not a specified shared timeline.",
+      "source_pointers": [
+        "/data/scenario",
+        "/data/first_mes",
+        "/data/alternate_greetings/0"
+      ]
+    },
+    {
+      "id": "question-example-speakers",
+      "question": "Who does {{char}} denote in the example dialogue, and who is the addressee? No named identities are established there.",
+      "source_pointers": [
+        "/data/mes_example"
+      ]
+    },
+    {
+      "id": "question-player-persona",
+      "question": "What is the player persona? No player identity or gender is provided, so preserve the absence of a specified persona rather than invent one.",
+      "source_pointers": []
+    },
+    {
+      "id": "question-archive-location",
+      "question": "Is the sealed archive part of the port archive, and what further setting geography is established?",
+      "source_pointers": [
+        "/data/description",
+        "/data/scenario"
+      ]
+    },
+    {
+      "id": "question-runtime",
+      "question": "What host, if any, interprets the unknown runtime extension? Its contents were not executed, and host behavior is outside this offline inspection.",
+      "source_pointers": [
+        "/data/extensions/unknown_runtime/scripts/0/content"
+      ]
+    }
+  ]
+}

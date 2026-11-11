@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "default",
+  "status": "ready",
+  "definition": {
+    "womanhood_policy": "author_defined_inclusive",
+    "custom_criteria": "",
+    "allowed_dynamics": [
+      "romance",
+      "friendship",
+      "neutral",
+      "rivalry",
+      "hostility",
+      "kinship"
+    ],
+    "infer_gender_from_stereotypes": false
+  },
+  "transformation": {
+    "scope": "main_cast",
+    "selected_character_ids": [],
+    "excluded_character_ids": [],
+    "player_persona": "preserve",
+    "protected_anchors": []
+  },
+  "relationships": {
+    "outcome_policy": "rederive_if_causal",
+    "pairing_targets": [],
+    "infer_romance_from_hostility": false,
+    "preserve_uncertainty": true
+  },
+  "workflow": "minimal-change",
+  "narrative_language": "preserve_source"
+}
