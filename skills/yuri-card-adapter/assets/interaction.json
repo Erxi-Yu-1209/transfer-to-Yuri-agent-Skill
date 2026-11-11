@@ -63,5 +63,32 @@
         }
       ]
     }
-  ]
+  ],
+  "presentation": {
+    "prompt": "The conversion is complete. Keep the original opening screen, status bar and styling, or redesign them?",
+    "options": [
+      {
+        "value": "keep",
+        "label": "Keep original styling"
+      },
+      {
+        "value": "redesign",
+        "label": "Redesign"
+      }
+    ]
+  },
+  "image_alignment": {
+    "prompt": "Assess the inspected main PNG, embedded UI images and linked images against the converted story. Keep these assets, or discuss changes?",
+    "options": [
+      {
+        "value": "keep",
+        "label": "Keep current images"
+      },
+      {
+        "value": "plan_changes",
+        "label": "Discuss image changes"
+      }
+    ],
+    "tools_integrated": false
+  }
 }

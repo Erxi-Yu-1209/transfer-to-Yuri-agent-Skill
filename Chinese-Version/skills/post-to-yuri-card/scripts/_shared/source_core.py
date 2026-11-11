@@ -132,11 +132,15 @@ def select_text(path, chapter=None, max_chars=6000, encoding="utf-8-sig", all_te
     return text, location
 
 
-def ingest(input_path, project, source_id, kind, chapter=None, max_chars=6000, url=None, encoding="utf-8-sig", all_text=False, chunk_chars=6000, max_file_mib=64):
+def ingest(input_path, project, source_id, kind, chapter=None, max_chars=6000, url=None, encoding="utf-8-sig", all_text=None, chunk_chars=6000, max_file_mib=64, scope_note=None):
     if not re.fullmatch(r"[a-z0-9][a-z0-9_-]{0,63}", source_id):
         raise ValueError("use a stable lower-case source ID")
     if kind not in ("post", "novel"):
         raise ValueError("kind must be post or novel")
+    if all_text is None:
+        all_text = kind == "novel"
+    if kind == "novel" and not all_text and not (scope_note or "").strip():
+        raise ValueError("novels default to all chapters; an excerpt requires the user's explicit scope instruction")
     if chapter is not None and chapter < 1:
         raise ValueError("chapter must be positive")
     project = Path(project)
@@ -156,6 +160,8 @@ def ingest(input_path, project, source_id, kind, chapter=None, max_chars=6000, u
     text, coverage = select_text(input_path, chapter, max_chars, encoding, all_text, max_file_mib)
     if all_text:
         coverage.update(reading_mode="all", chunk_chars=chunk_chars)
+    elif scope_note:
+        coverage.update(reading_mode="user_requested_excerpt", scope_authority="explicit_user_request", scope_note=scope_note)
     project.mkdir(parents=True, exist_ok=True)
     (project / "sources").mkdir(exist_ok=True)
     frozen = safe(project, f"sources/{source_id}.txt")
@@ -250,7 +256,8 @@ def source_coverage(project):
             raise ValueError("reading units do not cover the registered source")
     reviewed = [u["id"] for u in units if u["status"] == "agent_reviewed"]
     return {"mode": "segmented_source", "units": len(units), "reviewed_unit_ids": reviewed,
-            "complete_work_claimed": len(reviewed) == len(units),
+            "complete_work_claimed": len(reviewed) == len(units) and all(
+                not s["coverage"].get("partial") and (s["kind"] != "novel" or s["coverage"].get("reading_mode") == "all") for s in sources),
             "limitation": "Unit review flags are agent acknowledgments, not proof of semantic completeness."}
 
 

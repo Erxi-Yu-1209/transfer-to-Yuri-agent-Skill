@@ -4,7 +4,7 @@ from pathlib import Path
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
-NAMES = ("post-to-yuri-card", "novel-excerpt-to-yuri-card")
+NAMES = ("post-to-yuri-card", "novel-excerpt-to-yuri-card", "card-presentation")
 
 
 def sync():

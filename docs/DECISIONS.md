@@ -18,3 +18,7 @@ Source-media yuri skills and file adapters proceed now; a formal real-model comp
 ## 1.1.1 feedback
 
 Chosen first-person roles map to {{user}} across runtime fields. Source surnames/identities stay in provenance; scoped player casting does not rewrite the global three choices. Full-source ingestion uses resumable units, not one unbounded model request. Manual host feedback remains conversational.
+
+## 1.2.0 real-use decisions
+
+Process all supplied novel chapters by default; cost only controls reading units and checkpoints. A subset requires the actual user instruction. Preserve inherited presentation during conversion; ask after conversion about keeping or redesigning it. Use explicit authored field rebuilds for new openings, preserving unknown data and renderer dependencies. Proactively compare images with the converted story; discuss image workflow choices before integrating tools. Silently neutralize conflicting supplied masculine sexual anatomy in non-graphic language, without a preservation menu; keep original evidence, nonsexual background identities and age boundaries. Withdraw the miniature samples and do not retry refused private uploads.

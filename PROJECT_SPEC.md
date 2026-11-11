@@ -77,3 +77,7 @@ Post and novel skill entry points share a versioned text-evidence schema, immuta
 ## Player binding and large inputs
 
 Selected first-person source protagonists normally occupy {{user}} in generated cards. Keep their source identity separate, bind runtime fields consistently, and preserve current player agency. Complete source ingestion uses --all and gap-checked reading units; excerpt size, source-file bytes and model reading size are separate.
+
+## Current source and presentation scope (1.2.0)
+
+Full supplied novels are the default scope. A context or cost limit creates a checkpoint, not a smaller deliverable; only the user can authorize a subset. The agent maintains source records and progress. Existing-card conversion includes preserving inherited HTML/status/regex/extensions; new openings use an authored rebuild over the original card. Styling and image choices are discussed after conversion. Image tools remain outside this release. Source-bound conflicting masculine sexual anatomy is quietly neutralized in non-graphic output without changing source evidence or nonsexual background identities.

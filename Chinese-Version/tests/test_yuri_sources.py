@@ -191,9 +191,18 @@ class YuriSourcesTests(unittest.TestCase):
         self.ext["review_status"]="agent_reviewed";c.dump(self.project/"extracted.json",self.ext)
         first=c.read_unit(self.project);c.review_unit(self.project,first["id"])
         self.plan["allow_partial_source"]=True;self.plan["coverage_unit_ids"]=[first["id"]]
+        self.plan["partial_source_authorization"]={"basis":"explicit_user_request","instruction":"For this trial, use only the first reading unit."}
         self.build();meta=c.load(self.root/"output/adaptation.json")
         self.assertEqual(meta["units_sha256"],c.digest((self.project/"units.json").read_bytes()))
         self.assertFalse(meta["source_coverage"]["complete_work_claimed"])
+
+    def test_partial_flags_without_a_user_scope_instruction_are_not_authorization(self):
+        large=self.root/"large.txt";large.write_text("source text\n"*100)
+        c.ingest(large,self.project,"large","novel",all_text=True,chunk_chars=200)
+        self.ext["review_status"]="agent_reviewed";c.dump(self.project/"extracted.json",self.ext)
+        first=c.read_unit(self.project);c.review_unit(self.project,first["id"])
+        self.plan["allow_partial_source"]=True;self.plan["coverage_unit_ids"]=[first["id"]]
+        with self.assertRaisesRegex(ValueError,"unread units"):self.build()
 
     def test_unit_review_cli_returns_bounded_progress_counts(self):
         import contextlib, io

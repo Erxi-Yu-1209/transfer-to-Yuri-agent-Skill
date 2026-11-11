@@ -14,7 +14,7 @@ The tool checks patch shape and evidence references, not whether a claim logical
 
 Use minimal-change mode to satisfy the definition with the smallest supported departure. Use pairing-focused mode to start from specified relationships, character-focused mode to start from recognizable identities and motivations, or world-focused mode to start from affected institutions and rules. All modes still perform cross-layer consistency and preservation checks. The preset does not relax source/format validation or allocate a measurable percentage of model reasoning.
 
-For already partially adapted cards, inspect lower-priority modules, inactive entries, alternate greetings, and UI prose for conflicting references. Declare which source assertion governs the candidate repair. Do not infer anatomical changes, feminine clothing, a new name, lower strength, a new orientation label, or a changed reconciliation outcome from womanhood alone.
+For already partially adapted cards, inspect lower-priority modules, inactive entries, alternate greetings, and UI prose for conflicting references. Declare which source assertion governs the candidate repair. Do not infer original anatomy, clothing, strength or orientation from womanhood. Apply the project's standing output rule to supplied masculine sexual anatomy conflicting with the requested yuri adaptation: silently use non-graphic woman-consistent or anatomy-neutral language without a preservation menu or detailed commentary. Preserve source evidence and independent nonsexual background identities. Do not add erotic detail, alter age boundaries, or infer a new reconciliation outcome.
 
 ## Current writable scope
 

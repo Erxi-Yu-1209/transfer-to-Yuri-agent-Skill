@@ -1,0 +1,341 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "mode": {
+      "enum": [
+        "yuri",
+        "source"
+      ]
+    },
+    "target_entity_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_][A-Za-z0-9_-]*$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_][A-Za-z0-9_-]*$"
+          },
+          "kind": {
+            "enum": [
+              "gender",
+              "relationship",
+              "world_rule"
+            ]
+          },
+          "entity_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_][A-Za-z0-9_-]*$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "source_claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_][A-Za-z0-9_-]*$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "before": {
+            "type": "string",
+            "minLength": 1
+          },
+          "after": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relationship_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_][A-Za-z0-9_-]*$"
+          },
+          "cause_decision_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_][A-Za-z0-9_-]*$"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "causal_claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_][A-Za-z0-9_-]*$"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "changed_circumstance": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "entity_ids",
+          "source_claim_ids",
+          "before",
+          "after",
+          "rationale"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "patches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pointer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected_value_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "entity_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_][A-Za-z0-9_-]*$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "decision_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_][A-Za-z0-9_-]*$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "edits": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "start": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "end": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "expected": {
+                  "type": "string"
+                },
+                "replacement": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "start",
+                "end",
+                "expected",
+                "replacement"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "pointer",
+          "expected_value_sha256",
+          "entity_ids",
+          "decision_ids",
+          "edits"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "field_sources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_][A-Za-z0-9_-]*$"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "creative_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_][A-Za-z0-9_-]*$"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "claim_ids",
+          "creative_ids"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "creative_additions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_][A-Za-z0-9_-]*$"
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "statement",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "sources_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "extraction_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "draft_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "profile_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "player_binding": {
+      "type": "object",
+      "properties": {
+        "entity_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "macro": {
+          "const": "{{user}}"
+        },
+        "source_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authority": {
+          "enum": [
+            "explicit_user_request",
+            "first_person_workflow_default"
+          ]
+        },
+        "forbidden_runtime_aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "entity_id",
+        "macro",
+        "source_name",
+        "authority",
+        "forbidden_runtime_aliases"
+      ],
+      "additionalProperties": false
+    },
+    "units_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "allow_partial_source": {
+      "type": "boolean"
+    },
+    "coverage_unit_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "partial_source_authorization": {
+      "type": "object",
+      "properties": {
+        "basis": {
+          "const": "explicit_user_request"
+        },
+        "instruction": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "basis",
+        "instruction"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "mode",
+    "target_entity_ids",
+    "decisions",
+    "patches",
+    "field_sources",
+    "creative_additions",
+    "sources_sha256",
+    "extraction_sha256",
+    "draft_sha256",
+    "profile_sha256"
+  ],
+  "additionalProperties": false
+}

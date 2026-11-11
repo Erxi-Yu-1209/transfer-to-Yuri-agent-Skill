@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "locale": "zh-CN",
+  "default_marker": "（当前默认）",
+  "answer_prompt": "请输入选项编号（回车保留当前值）：",
+  "invalid_answer": "请输入列表中的编号。",
+  "custom_prompt": "请填写自定义的角色判定标准：",
+  "exists_error": "目标配置已存在；请选用新文件名，避免覆盖已有设置。",
+  "saved": "已保存配置：{path}。后续转换会复用此配置，无需重复定义。",
+  "error": "未保存配置：{detail}",
+  "questions": [
+    {
+      "pointer": "/definition/womanhood_policy",
+      "prompt": "哪些角色符合此配置中的“女性”定义？",
+      "options": [
+        {
+          "value": "author_defined_inclusive",
+          "label": "由作者定义为女性的角色，包括虚拟及非人角色"
+        },
+        {
+          "value": "human_explicitly_female",
+          "label": "明确描述为女性的人类角色"
+        },
+        {
+          "value": "custom",
+          "label": "使用自定义标准"
+        }
+      ]
+    },
+    {
+      "pointer": "/transformation/scope",
+      "prompt": "默认转换哪些角色？",
+      "options": [
+        {
+          "value": "main_cast",
+          "label": "转换主要角色，保留背景角色"
+        },
+        {
+          "value": "named_characters",
+          "label": "仅转换每张卡中明确选定的角色"
+        },
+        {
+          "value": "entire_cast",
+          "label": "转换全部角色，允许明确排除个别角色"
+        }
+      ]
+    },
+    {
+      "pointer": "/relationships/outcome_policy",
+      "prompt": "允许多大程度地调整人物关系？",
+      "options": [
+        {
+          "value": "rederive_if_causal",
+          "label": "允许由情境变化及明确因果支持的关系调整"
+        },
+        {
+          "value": "preserve_outcomes",
+          "label": "保留既有关系动态与结局"
+        },
+        {
+          "value": "explicit_pairing_targets",
+          "label": "按每张卡中明确指定的配对目标调整"
+        }
+      ]
+    }
+  ],
+  "presentation": {
+    "prompt": "转换已完成。你想保留原卡的首屏、状态栏和渲染样式，还是重新设计？",
+    "options": [
+      {
+        "value": "keep",
+        "label": "保留原样式"
+      },
+      {
+        "value": "redesign",
+        "label": "重新设计"
+      }
+    ]
+  },
+  "image_alignment": {
+    "prompt": "请结合已核对的图片与百合故事说明是否匹配；范围包括主 PNG、界面内图片及链接图片。你想保留这些图片，还是先讨论更换方案？",
+    "options": [
+      {
+        "value": "keep",
+        "label": "保留现有图片"
+      },
+      {
+        "value": "plan_changes",
+        "label": "先讨论更换方案"
+      }
+    ],
+    "tools_integrated": false
+  }
+}

@@ -48,7 +48,7 @@ def chinese_files(sources):
     result["README.md"] = sources["locales/zh-CN/README.md"]
     result["templates/TRIAL_FEEDBACK.md"] = sources["locales/zh-CN/TRIAL_FEEDBACK.md"]
     result["skills/yuri-card-adapter/assets/interaction.json"] = sources["locales/zh-CN/interaction.json"]
-    for name in ("post-to-yuri-card", "novel-excerpt-to-yuri-card"):
+    for name in ("post-to-yuri-card", "novel-excerpt-to-yuri-card", "card-presentation"):
         path = f"skills/{name}/assets/interaction.json"
         if path in result:
             result[path] = sources["locales/zh-CN/interaction.json"]

@@ -1,90 +1,79 @@
-# Yuri Card Workbench 1.1.1（百合角色卡工作台）
+# Yuri Card Workbench 1.2.0（百合角色卡工作台）
 
-本项目的重点是：按照已保存的百合定义，将角色卡、论坛叙事和小说节选改编为百合角色卡。来源事实与虚构改编决定分别保存；不会把“原作者性别未知”改写成“原作者本来就是女性”，也不会为了百合而强迫恋爱、抹去冲突或改变人物自主性。
+把角色卡、帖子和小说改编为符合已保存偏好的**百合角色卡**。阅读、写作、文件和记录由智能体处理；重要选择直接在对话中决定。
 
-核心工作流、推理准则、代码及配置值保持英文；用户交互及三个默认选项使用中文。
+核心工作流、推理准则和代码保持英文；用户交互与三个默认选项使用中文。
 
-## 交给智能体
+## 一句话开始
 
-打开项目后直接说：
+已经有 JSON／PNG 角色卡：
 
-> 使用 post-to-yuri-card 或 novel-excerpt-to-yuri-card 处理这个来源。复用 config/preferences.json，先估算阅读成本，再选择适量样本并生成百合角色卡。原始事实、改编决定和新写的开场分别记录。有重要创作选择时在对话中询问我，记录由你维护。
-
-已有 JSON 角色卡继续使用 `skills/yuri-card-adapter/SKILL.md`。两个新技能分别处理帖子和小说，内部共用 `shared/`；独立技能文件夹内也包含所需实现与来源声明。新技能以百合改编为默认目标，原设定分支用于对照。脚本不调用模型；理解文本和编写计划由智能体负责。
-
-## 环境与一次性默认值
-
-需要 Python 3.10+。执行 `python -m pip install -r requirements.txt`。
-
-| 设置 | 中文默认选项 | 保存值 |
-| --- | --- | --- |
-| 女性定义 | 由作者定义为女性的角色，包括虚拟及非人角色 | `author_defined_inclusive` |
-| 转换范围 | 转换主要角色，保留背景角色 | `main_cast` |
-| 关系调整 | 允许由情境变化及明确因果支持的关系调整 | `rederive_if_causal` |
-
-运行 `python scripts/setup_profile.py --show` 可查看。需要修改时用 `--output config/preferences.local.json` 新存一份，后续显式选择该配置即可，无需逐卡重填。默认保留玩家身份及来源语言。
-
-## 帖子／小说到百合卡
-
-```bash
-python scripts/source_pipeline.py ingest input.txt --kind post --source-id post-001 --project private-casework/my-post --max-chars 6000
-python scripts/source_pipeline.py ingest novel.epub --kind novel --source-id novel-scene --project private-casework/my-novel --chapter 1 --max-chars 3000
+```text
+使用 yuri-card-adapter，把这张角色卡改编为百合卡。
+先理解原作的人物和故事，再按我保存的偏好改编。转换时保留原有前端样式和设置；需要新开场时使用创作重建流程。
+完成后询问我要保留原样式还是重新设计，并核对全部图片是否符合改编后的故事。
+文件和记录由你维护，重要选择直接在当前对话中讨论。
 ```
 
-这是两个独立项目示例。支持 TXT、Markdown、EPUB。网页由智能体使用宿主可用工具获取并保存正文快照，再以 `--url` 记录来源；脚本不自动浏览或登录。EPUB 按实质叙事 spine 成员选择，可能不等于文学章节。截取范围与未读范围会明确记录。
+有帖子或已保存的网页：
 
-智能体填写 `extracted.json`、编写原设定 `card.md` 和百合改编计划，随后执行：
-
-```bash
-python scripts/source_pipeline.py validate --project private-casework/my-post
-python scripts/source_pipeline.py bind-plan --project private-casework/my-post --draft private-casework/my-post/card.md --plan private-casework/my-post/plan.unbound.json --profile config/preferences.json --output private-casework/my-post/plan.json
-python scripts/source_pipeline.py build --project private-casework/my-post --draft private-casework/my-post/card.md --plan private-casework/my-post/plan.json --profile config/preferences.json --output private-casework/my-post/results
+```text
+使用 post-to-yuri-card，把这个帖子改编为百合角色卡。
+完整阅读所提供的帖子，区分原始事实与虚构改编决定，保留来源中未知的身份信息；玩家当下的动作和回答由我决定。
+记录由你维护，有重要选择时在对话中询问我。
 ```
 
-结果含原设定卡、百合卡、世界书及 `adaptation.json`。后者记录来源性别、虚构性别指定、依据、创作补充及精确改动。原本已经是女性的角色可以不做身份改动；亲情、友情和矛盾也可以属于已保存的百合定义。已有章节资料可复用于同一作品的其他角色，不必反复阅读全文。
+有小说或 EPUB：
 
-通用 JSON／PNG 序列化直接复用 Foreverse 的 MIT 工具；本项目新增部分重点处理百合决策和来源绑定。所有非空叙事字段都必须关联来源主张或明确标注为创作补充。不会把整章小说堆进角色卡。
-
-## PNG 与世界书
-
-```bash
-python scripts/source_pipeline.py unpack-png input.png --output runs/input-card.json
-python scripts/source_pipeline.py pack-png output-card.json --avatar original.png --output runs/output-card.png
-python scripts/source_pipeline.py extract-worldbook output-card.json --output runs/worldbook.json
-python scripts/source_pipeline.py embed-worldbook output-card.json runs/worldbook.json --replace --output runs/card-with-book.json
+```text
+使用 novel-excerpt-to-yuri-card，把这部小说改编为百合角色卡。
+先估算阅读成本，再分批、可续接地处理全部已提供章节。没有我的明确要求，不得自行改成取样或减少章节。
+保留来源链、人物声音和故事阶段；阅读进度和创作决定由你维护，在当前对话中沟通。
 ```
 
-输出必须使用新路径。PNG 嵌卡复用上游实现并保留所给图像数据；读取目前支持未压缩的 `tEXt` chara/ccv3 载荷。结构化世界书可显式拆出／装回；把描述里的设定正文改造成可激活条目仍需内容计划。这是 SillyTavern 文件适配器，不代表已连接真实宿主 API。
+想保留或调整转换后的卡面：
 
-## 审阅与交付
-
-智能体维护文件，你直接在当前对话中确认、纠正或改变创作方向，不需要手填 Markdown 表单。复用已保存配置和资料库；单个案例需要决策时保留其他已完成结果。已编写计划可用 `scripts/batch_source_build.py --jobs jobs.json --report runs/batch-status.json` 批量构建；每项独立记录成功或失败，可识别哈希一致的已完成结果。没有实际后台宿主时，不宣称会话结束后仍能继续批处理。
-
-本轮只用完整帖子、普通小说第一章及 GL 小说一个场景。实际范围与结果见英文 `docs/SAMPLE_RESULTS.md`；私人证据与生成卡在主目录的 `private-casework/`，不属于公开源码。没有把整本小说或 EPUB 原始插图加入公开发行内容。
-
-本轮及后续默认按 Google Drive 文件夹交付。公共代码和私人案例由清单与 `.gitignore` 区分。第三方代码与许可见 `THIRD_PARTY_NOTICES.md`；项目自身整体许可证仍待权利人决定。
-
-维护者在英文主目录修改核心与 `locales/zh-CN/`，然后执行：
-
-```bash
-python scripts/sync_source_skills.py
-python scripts/build_release.py --sync-chinese
-python scripts/build_release.py --check
-python -m unittest discover -s tests -p test_yuri_sources.py -q
+```text
+使用 card-presentation，检查这张百合卡的首屏、状态栏和正则渲染器。
+在我决定保留还是重新设计之前，保持原有呈现方式可用。
+把主 PNG、界面内图片和链接图片与改编后的故事进行核对；需要更换时先讨论方案，不要直接接入图片工具。
 ```
 
-中文运行版不单独维护打包工具。更多实现边界见英文技术文档。
+小说技能沿用旧文件夹名称以保持兼容，**默认处理整部已提供作品**。只有你明确指定章节或节选时才缩小范围。成本估算和上下文限制只影响每批阅读量；会话提前结束时保存未完成进度，之后续接，不把部分章节当成完整成品。
 
-## 玩家视角与大输入（1.1.1）
+## 能做什么
 
-第一人称主角通常绑定为 `{{user}}`，模型扮演对方。原作姓名保留在来源证据和作者说明，实际卡内的描述、开场和世界书统一用玩家宏；不再混用“发帖者”或“叙述者”。已有玩家人设仍需保留，当前动作、内心和回答由玩家决定。本轮两张第一人称卡已按反馈修复，具体角色分配使用项目内 `profile.player.json`，没有修改三个全局默认选项。
+- 处理现有 JSON／PNG 角色卡、帖子、TXT／Markdown 和 EPUB 可读正文。
+- 按来源进行百合改编，支持原本就是 GL 的作品、群像、非人角色和不以恋爱为中心的女性关系。
+- 原有转换器处理局部修改；创作重建流程支持新开场和较大幅度的重写。
+- 转换时保留原 HTML／CSS、状态栏输出协议、正则渲染器、扩展设置和世界书激活元数据。
+- 转换后询问保留还是重做样式，并主动核对主图、界面图片和链接图片。本版只检查和讨论图片，不接入图片编辑或生成工具。
+- 共用来源与提取记录，复用已读资料，保存完整长篇的分批阅读进度。
 
-`--max-chars` 是文本节选选项，不是现有 JSON 角色卡或整本小说的总长度限制。完整长篇可运行：
+原始事实与改编决定分开：原发帖者性别未知时，来源记录仍然未知。选定的第一人称主角通常统一绑定为 `{{user}}`，模型扮演对方；玩家的当前动作、内心和回答仍由玩家决定。不为了百合强迫恋爱、消除矛盾或抹去人物目标。
 
-```bash
-python scripts/source_pipeline.py ingest novel.txt --kind novel --source-id book --project private-casework/book --all --chunk-chars 6000
-python scripts/source_pipeline.py next-unit --project private-casework/book
-python scripts/source_pipeline.py review-unit --project private-casework/book --unit book-000001
-```
+来源里与百合改编要求冲突的男性性解剖描述，会静默转换成非露骨、符合女性设定或不限定解剖结构的表达；不复述细节，也不再提供保留选项。背景人物的非性身份和原始证据保持完整，年龄边界继续适用。
 
-智能体逐个阅读单元、更新来源提取并标记已读，然后续接下一个单元。登记整本书不会把全文一次送给模型；未读单元不能自动计作已完整处理。图像较多的 EPUB 可另用 `--max-file-mib 256` 调整默认64 MiB输入字节保护，与每次阅读量分开。现有 JSON 检查器读取完整文件，不使用这个文本节选选项。详见英文 `docs/LARGE_INPUTS.md`。
+## 三个已保存的默认选项
+
+| 设置 | 中文默认选项 |
+| --- | --- |
+| 女性定义 | 由作者定义为女性的角色，包括虚拟及非人角色 |
+| 转换范围 | 转换主要角色，保留背景角色 |
+| 关系调整 | 允许由情境变化及明确因果支持的关系调整 |
+
+已有配置直接复用。需要修改时在对话中告诉智能体即可，不需要逐卡填问卷或手写 Markdown 反馈表。
+
+## 试用与反馈
+
+请智能体制作你实际想使用的角色卡。把最终 JSON／PNG 导入 SillyTavern，再在对话中说明哪些地方符合预期、哪些地方需要修改；证据、记录和下一版由智能体维护。文件检查、画面预览、真实宿主使用和你的判断会分别记录。
+
+早期三张微型开发样本已撤回，不再作为推荐测试卡。当前真实使用反馈及其边界见英文 `docs/REAL_USE_FEEDBACK.md`。你的私人卡和测试文件夹不属于公共发行内容。
+
+## 环境与交付
+
+使用具备本地文件能力和 Python 3.10+ 的智能体；需要时让它安装 `requirements.txt`。脚本不直接调用模型 API，不需要 API 密钥；理解和写作由宿主中的智能体完成。
+
+各技能携带所需运行文件和来源声明，跨任务时会说明所需配套技能；公共实现统一维护在 `shared/`。详细命令、批处理和维护步骤见英文 `docs/TECHNICAL_USAGE.md`，这些由智能体操作。
+
+本轮及后续按 Google Drive 文件夹交付，保留目录结构。`.gitignore` 和公共文件白名单排除私人原文、案例、本地配置及凭据；不会把整本小说或 EPUB 原始插图加入公共发行。通用导出代码保持 Foreverse MIT 原样，TavernWeave 的工作方法参考有明确归属。项目自身整体许可证仍由权利人决定。

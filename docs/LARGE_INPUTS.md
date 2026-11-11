@@ -1,15 +1,17 @@
-# Input size, context size and coverage
+# Whole-work scope and bounded reading
 
-There are three separate limits.
+All supplied novel chapters are processed by default. Estimate cost first, then read the entire supplied work through resumable units. Context or token pressure changes batch size and continuation timing, never silently changes chapter coverage. If a session ends early, checkpoint incomplete progress and resume; do not deliver that subset as the complete conversion.
 
-| Setting | Applies to | Meaning |
-| --- | --- | --- |
-| Existing JSON inspector byte guard | Character-card JSON files | Full structural inspection; no max-chars truncation. The current guard is 64 MiB, far above ordinary tens-of-thousands-character cards. |
-| --max-chars | Text/EPUB excerpt mode | Intentionally selects a bounded scene for quick work; the record says partial when material is omitted. |
-| --all with --chunk-chars | Complete text/EPUB ingestion | Freezes full supported readable text, then creates bounded reading units with complete interval coverage. Per-unit size is independent of dataset length. |
+```bash
+python scripts/source_pipeline.py ingest novel.epub --kind novel --source-id book --project private-casework/book --chunk-chars 6000
+python scripts/source_pipeline.py next-unit --project private-casework/book
+python scripts/source_pipeline.py review-unit --project private-casework/book --unit book-000001
+```
 
-Text-source input bytes default to 64 MiB and can be raised with --max-file-mib. --all and --chapter are separate modes. EPUB full mode includes readable non-navigation spine text, including short members; images remain outside textual extraction. Individual XML members retain a 16 MiB parser guard. Not every EPUB reading-order member is a literary chapter.
+The CLI defaults to full ingestion for posts and novels; `--all` remains an explicit synonym. The agent reads every unit, updates extraction, validates quotes and marks only actually reviewed units. A frozen file does not prove reading. `units.json` records coverage and enables resumption. Complete interval coverage and all review flags are necessary, not proof of semantic quality.
 
-The agent requests next-unit, reads the returned text with global frozen-source offsets, updates extraction, validates exact quotes and marks review-unit. Progress is saved in units.json. Adding a new source uses a new immutable ID. A source snapshot is not evidence that an agent read it. Acknowledgments do not establish semantic completeness. The builder binds ledger hashes and rejects unread source scope unless the plan explicitly declares reviewed partial units. No infinite automatic model loop or closed-session background execution is supplied.
+Only a user's explicit subset request permits `--excerpt --scope-note "<actual user instruction>"` and optional `--chapter` / `--max-chars`. Cost conservation alone is not a subset request. Builds from novel excerpts need `partial_source_authorization` with basis `explicit_user_request` and the actual instruction. A partial ledger also needs `allow_partial_source` and reviewed `coverage_unit_ids`. Old excerpt projects cannot silently pass as full-work projects.
 
-For the GL correction, the initial 2,939-character scene ended before the first surname mention at offset 3,278 in the normalized first narrative member. A new immutable excerpt extends the evidence; it confirms surname 島村, not an invented given name. The card uses {{user}} for that role.
+`--chunk-chars` controls reading-unit size, not dataset size. `--max-file-mib` controls the input-byte guard (64 MiB default, independently adjustable). Each EPUB XML member retains a 16 MiB parser guard. All readable non-navigation spine members are included; these need not equal literary chapters, and visual artwork is outside textual coverage. Report unsupported or missing material instead of pretending it was read.
+
+Existing JSON-card inspection reads the complete file under its own byte guard and has no max-chars truncation. Thousands of characters, hundreds of chapters and model context size are separate concerns. Source libraries retain provenance and story stages; a complete source read does not require copying chapters into the card or revealing later-story spoilers in an opening.

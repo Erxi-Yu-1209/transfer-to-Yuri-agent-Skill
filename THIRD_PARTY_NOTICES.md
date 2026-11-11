@@ -27,3 +27,7 @@ The same code and license are included in the generated standalone skill bundles
 `shared/spans.py` copies the unchanged protected-syntax and exact-span functions from Workbench v0.5.0 `apply_plan.py`. Existing JSON inspection, profiles, guarded conversion and private case verification remain in place. These are project-owned implementation reuse, not a third-party license grant.
 
 Original Workbench files still have no selected project-wide license. This notice does not impose an inferred upstream license on them.
+
+## Additional method references reviewed for 1.2.0
+
+TavernWeave (LiarMTTT): `sillytavern-embedded-ui` (file Git blob cfcaaada98a90bb88164308f2aae9b11210fc128), `sillytavern-render-regex-pipeline` (bbb616c35e9b9589daf0a79752bb89a626fdccaf), `tavern-card-builder` (f7934771885bf4f326f8fa3a29795f2e84e13a14), and `build-work-library` (e0b2b96cfa2aebad83f9dd633040f839de797863), reviewed 2026-11-11. References informed separation of authoring/presentation, preservation inventories, fixture-based regex review, provenance and resumable reading. No code or templates from these modules are copied. TavernWeave original material is under PolyForm Noncommercial 1.0.0; these references do not relicense it or imply affiliation. Workbench whole-work default follows the user requirement rather than adopting TavernWeave targeted-reading scope. Foreverse MIT code and its license remain unchanged.

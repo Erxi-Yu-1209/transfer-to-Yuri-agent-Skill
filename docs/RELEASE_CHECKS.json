@@ -1,125 +1,25 @@
 {
-  "version": "1.1.1",
-  "date": "2026-11-11",
-  "status": "release_checks_passed",
-  "focus": "yuri decisions; established generic exporter reused",
-  "resource_plan": "docs/RESOURCE_PLAN.md",
-  "selected_characters": 8656,
-  "upstream_exporter": {
-    "repository": "foreverse-app/character-card-skills",
-    "path": "tools/card_md_to_st.py",
-    "git_blob": "6cfd4efb3d0645627a21202520547fda1a4249ad",
-    "byte_identity": "verified",
-    "exhaustive_retesting": false,
-    "license_notice": "shared/vendor/FOREVERSE_LICENSE.txt"
-  },
-  "focused_yuri_tests": {
-    "passed": 21,
+  "version": "1.2.0",
+  "english_tests": {
+    "passed": 117,
     "failed": 0
   },
-  "sample_trials": [
-    {
-      "case": "post",
-      "characters": 3206,
-      "selected_plan": "plan.current.json",
-      "mode": "yuri",
-      "decisions": 1,
-      "changed_fields": 1,
-      "effective_genders": {
-        "poster": "woman",
-        "girlfriend": "woman"
-      },
-      "host_import": "not_run",
-      "live_roleplay": "not_run",
-      "artifact": "private-casework/post/final/yuri-card.v2.json",
-      "sha256": "517febe69ef00bc1d1e3a593bb1fa813c4b9a7a02c5efcb3a9e6e3bdb0ff93a7",
-      "player_binding": {
-        "entity_id": "poster",
-        "macro": "{{user}}",
-        "source_name": null,
-        "authority": "explicit_user_request",
-        "forbidden_runtime_aliases": [
-          "发帖者",
-          "發帖者",
-          "poster"
-        ]
-      }
-    },
-    {
-      "case": "gl",
-      "characters": 2939,
-      "selected_plan": "plan.current.json",
-      "mode": "yuri",
-      "decisions": 0,
-      "changed_fields": 0,
-      "effective_genders": {
-        "narrator": "woman",
-        "adachi": "woman"
-      },
-      "host_import": "not_run",
-      "live_roleplay": "not_run",
-      "artifact": "private-casework/gl/final/yuri-card.v2.json",
-      "sha256": "aa9525f0fc5efef7312f94abb09b7fd618f9a058dad4e60debfa5d952552f65b",
-      "player_binding": {
-        "entity_id": "narrator",
-        "macro": "{{user}}",
-        "source_name": "島村",
-        "authority": "explicit_user_request",
-        "forbidden_runtime_aliases": [
-          "敘述者",
-          "叙述者",
-          "narrator",
-          "島村",
-          "岛村"
-        ]
-      },
-      "name_evidence": "Confirmed surname 島村 in gl-name-scene; original 2939-character scene ended earlier."
-    },
-    {
-      "case": "general",
-      "characters": 2511,
-      "selected_plan": "plan.current.json",
-      "mode": "yuri",
-      "decisions": 1,
-      "changed_fields": 2,
-      "effective_genders": {
-        "han": "woman"
-      },
-      "host_import": "not_run",
-      "live_roleplay": "not_run",
-      "artifact": "private-casework/general/final/yuri-card.v2.json",
-      "sha256": "5bd301b59961a74bdd34d8ffaa577cbc2beb50209f91fb55904f340642e72fc7",
-      "player_binding": null
-    }
-  ],
-  "wrapper_smoke": {
-    "png": "pass",
-    "image_payload_preserved": true,
-    "structured_worldbook": "pass",
-    "batch_failure_isolation": "pass",
-    "batch_safe_resumption": "pass"
+  "chinese_runtime_tests": {
+    "passed": 111,
+    "failed": 0
   },
-  "live_sillytavern": "not_run",
-  "live_model_roleplay": "not_run",
-  "matched_baseline": "not_run",
-  "automated_suites": {
-    "english_project": {
-      "passed": 102,
-      "failed": 0
-    },
-    "chinese_runtime": {
-      "passed": 96,
-      "failed": 0
-    }
-  },
-  "standalone_bundle_parity": "pass",
-  "chinese_interaction_and_english_core_parity": "pass",
-  "reused_span_routine_identity": "pass",
-  "delivery": "Google Drive folder; public allowlist plus separately ignored bounded source casework",
-  "feedback_patch": {
-    "player_mapping": "{{user}} in post and GL narrative/greeting/worldbook; counterpart controlled by model",
-    "gl_surname": "島村, first occurrence at normalized member offset 3278; confirmed by 我姓島村",
-    "general_card_changed": false,
-    "complete_source_units": "full source retention, gap-checked units, resumable review; no full-book model read in this patch"
+  "focused_new_presentation_scope_tests": 14,
+  "full_novel_model_processing_this_round": "not_run",
+  "new_host_or_model_trials_this_round": "not_run",
+  "upstream_exporter": "unchanged",
+  "source_scope": "full supplied work by default; actual user instruction required for subset",
+  "image_tools_integrated": false,
+  "withdrawn_samples": "removed from Drive at user request; not imported or roleplay-tested",
+  "private_source_uploads": "refused; do not retry",
+  "evidence_limit": "Offline checks and agent reviews do not establish actual host or roleplay behavior.",
+  "fresh_skill_use_check": {
+    "result": "pass",
+    "task": "new original archive opening with preserved styling; only first_mes changed",
+    "live_host": "not_run"
   }
 }

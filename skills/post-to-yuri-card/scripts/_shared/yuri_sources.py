@@ -13,8 +13,9 @@ from pathlib import Path
 from source_core import HERE, canonical, digest, dump, ingest, load, validate_extraction, validate_schema, read_unit, review_unit, source_coverage
 from spans import replace_spans
 import card_io
+import card_presentation
 
-VERSION = "1.1.1"
+VERSION = "1.2.0"
 
 
 def profile_at(path=None):
@@ -88,9 +89,14 @@ def adapt(project, draft, plan_path, output, profile_path=None, avatar=None):
         if plan[key] != value:
             raise ValueError("stale plan binding: " + key)
     coverage = source_coverage(project)
+    novel_excerpts = [s for s in manifest["sources"] if s["kind"] == "novel" and s["coverage"].get("reading_mode") != "all"]
+    authority = plan.get("partial_source_authorization", {})
+    partial_authorized = authority.get("basis") == "explicit_user_request" and bool(authority.get("instruction", "").strip())
+    if novel_excerpts and not partial_authorized:
+        raise ValueError("novel excerpt export requires explicit user scope authorization; full-work coverage is the default")
     if coverage["mode"] == "segmented_source" and not coverage["complete_work_claimed"]:
         selected_units = set(plan.get("coverage_unit_ids", []))
-        if not plan.get("allow_partial_source") or not selected_units or not selected_units.issubset(coverage["reviewed_unit_ids"]):
+        if not partial_authorized or not plan.get("allow_partial_source") or not selected_units or not selected_units.issubset(coverage["reviewed_unit_ids"]):
             raise ValueError("source has unread units; finish them or explicitly bind a reviewed partial scope")
     entities = {e["id"]: e for e in extraction["entities"]}
     claims = {c["id"]: c for c in extraction["claims"]}
@@ -215,6 +221,7 @@ def adapt(project, draft, plan_path, output, profile_path=None, avatar=None):
         "decisions": plan["decisions"], "field_sources": plan["field_sources"], "creative_additions": plan["creative_additions"],
         "changes": changes, "source_records_unchanged": True,
         "player_binding": player_binding, "source_coverage": coverage,
+        "partial_source_authorization": plan.get("partial_source_authorization"),
         "sources_sha256": plan["sources_sha256"], "extraction_sha256": plan["extraction_sha256"],
         "draft_sha256": plan["draft_sha256"], "profile_sha256": plan["profile_sha256"], "plan_sha256": digest(Path(plan_path).read_bytes()),
         "units_sha256": plan.get("units_sha256"),
@@ -237,9 +244,12 @@ def main(argv=None):
     p = sub.add_parser("ingest")
     p.add_argument("input", type=Path); p.add_argument("--project", type=Path, required=True)
     p.add_argument("--source-id", required=True); p.add_argument("--kind", choices=["post", "novel"], required=True)
-    p.add_argument("--chapter", type=int); p.add_argument("--max-chars", type=int, default=6000)
+    p.add_argument("--chapter", type=int); p.add_argument("--max-chars", type=int)
     p.add_argument("--url"); p.add_argument("--encoding", default="utf-8-sig")
-    p.add_argument("--all", dest="all_text", action="store_true", help="freeze the full source and plan bounded reading units")
+    scope = p.add_mutually_exclusive_group()
+    scope.add_argument("--all", action="store_true", help="full-source ingestion (the default)")
+    scope.add_argument("--excerpt", action="store_true", help="only when the user explicitly requests a subset")
+    p.add_argument("--scope-note", help="the user's explicit excerpt/chapter instruction; cost alone is not authorization")
     p.add_argument("--chunk-chars", type=int, default=6000, help="reading unit size in --all mode; not a dataset limit")
     p.add_argument("--max-file-mib", type=int, default=64, help="configurable input byte guard; separate from reading-unit size")
     p = sub.add_parser("next-unit"); p.add_argument("--project", type=Path, required=True); p.add_argument("--unit")
@@ -255,10 +265,24 @@ def main(argv=None):
     p = sub.add_parser("pack-png"); p.add_argument("card", type=Path); p.add_argument("--avatar", type=Path, required=True); p.add_argument("--output", type=Path, required=True)
     p = sub.add_parser("extract-worldbook"); p.add_argument("card", type=Path); p.add_argument("--output", type=Path, required=True)
     p = sub.add_parser("embed-worldbook"); p.add_argument("card", type=Path); p.add_argument("book", type=Path); p.add_argument("--output", type=Path, required=True); p.add_argument("--replace", action="store_true")
+    p = sub.add_parser("presentation-audit"); p.add_argument("input", type=Path); p.add_argument("--output", type=Path)
+    for command in ("bind-rebuild", "rebuild-card"):
+        p = sub.add_parser(command)
+        for name in ("source", "draft", "plan", "output"):
+            p.add_argument("--" + name, type=Path, required=True)
     args = parser.parse_args(argv)
     try:
         if args.command == "ingest":
-            result = ingest(args.input, args.project, args.source_id, args.kind, args.chapter, args.max_chars, args.url, args.encoding, args.all_text, args.chunk_chars, args.max_file_mib)
+            if args.excerpt and not (args.scope_note or "").strip():
+                raise ValueError("--excerpt requires --scope-note with the user's actual scope instruction")
+            if not args.excerpt and (args.chapter is not None or args.max_chars is not None):
+                raise ValueError("chapter/max-chars selection requires --excerpt and --scope-note; full work is the default")
+            result = ingest(args.input, args.project, args.source_id, args.kind, args.chapter, args.max_chars or 6000, args.url, args.encoding, not args.excerpt, args.chunk_chars, args.max_file_mib, args.scope_note)
+        elif args.command == "presentation-audit":
+            result = card_presentation.audit(args.input)
+            if args.output: card_io.write_new(args.output, result)
+        elif args.command == "bind-rebuild": result = card_presentation.bind(args.source, args.draft, args.plan, args.output)
+        elif args.command == "rebuild-card": result = card_presentation.rebuild(args.source, args.draft, args.plan, args.output)
         elif args.command == "next-unit": result = read_unit(args.project, args.unit)
         elif args.command == "review-unit":
             stats = review_unit(args.project, args.unit)

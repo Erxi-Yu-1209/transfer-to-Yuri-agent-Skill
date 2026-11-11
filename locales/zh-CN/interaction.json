@@ -63,5 +63,32 @@
         }
       ]
     }
-  ]
+  ],
+  "presentation": {
+    "prompt": "转换已完成。你想保留原卡的首屏、状态栏和渲染样式，还是重新设计？",
+    "options": [
+      {
+        "value": "keep",
+        "label": "保留原样式"
+      },
+      {
+        "value": "redesign",
+        "label": "重新设计"
+      }
+    ]
+  },
+  "image_alignment": {
+    "prompt": "请结合已核对的图片与百合故事说明是否匹配；范围包括主 PNG、界面内图片及链接图片。你想保留这些图片，还是先讨论更换方案？",
+    "options": [
+      {
+        "value": "keep",
+        "label": "保留现有图片"
+      },
+      {
+        "value": "plan_changes",
+        "label": "先讨论更换方案"
+      }
+    ],
+    "tools_integrated": false
+  }
 }

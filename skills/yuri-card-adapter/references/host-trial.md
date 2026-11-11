@@ -9,7 +9,7 @@ Before a trial, inspect author-supplied card and preset layers separately. Do no
 - Distinguish known host macros, ordinary prose conventions and custom runtime protocols. A counter-like string is not automatically a macro. Never replace it with guessed host syntax or imply it will increment.
 - Check capacity/census, chronology, alternate openings and player role. An unresolved source capacity question does not authorize adding a bed or changing the player identity.
 - Compare card and supplied preset mandates, including status panels and formatting. Mark a conflict even if no field is edited; a model must still receive and resolve the instruction stack.
-- Plain source prose may render plainly. Adding HTML, regex, UI or a status renderer is an optional authoring feature, not necessary evidence of successful genre conversion.
+- Plain source prose may render plainly. Adding a new UI is optional; preserving an inherited HTML/status/regex system is part of conversion. Never retain a status-output protocol while dropping its renderer. After conversion ask whether to keep styling or redesign it, reusing prior choices. Use card-presentation for authored rebuilds and renderer review; file preservation does not establish actual host rendering.
 
 ## Trial record
 

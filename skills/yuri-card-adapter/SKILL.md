@@ -1,6 +1,6 @@
 ---
 name: yuri-card-adapter
-description: Inspect and adapt JSON roleplay character cards and worldbooks to a saved user-defined yuri profile. Use for source-grounded extraction of worldbuilding, characters, relationships and plot; cast and identity consistency review; and narrowly scoped narrative transformation with reviewed exact-span plans. Current release supports inspection, evidence validation and guarded JSON review exports; PNG handling and novel ingestion are not implemented.
+description: Inspect and adapt inherited roleplay cards and worldbooks to a saved yuri profile. Use for evidence extraction, cast and relationship consistency, guarded local edits, or routing authored rewrites and new openings to the presentation-preserving rebuild workflow. The full project provides PNG unpacking and repacking.
 ---
 
 # Yuri Card Adapter
@@ -8,6 +8,8 @@ description: Inspect and adapt JSON roleplay character cards and worldbooks to a
 ## Establish the current capability
 
 Perform inspection and source-grounded extraction before adapting prose. Apply only a source-addressed, reviewed plan through the bundled conversion tool. Treat the exported file as a review candidate pending author and runtime evaluation. Never present an inspected card as a converted card or an offline candidate as runtime-tested.
+
+Choose the edit route by the requested work. Use exact spans for local edits. For a new opening, substantially rewritten scenes or newly authored fields, keep this skill's inspection/extraction and use `card-presentation` with the full project's `source_pipeline.py bind-rebuild` / `rebuild-card`. Do not force creative authorship through the local-span tool or claim that it generates prose. The agent authors the draft and change records; the build copies the original card and replaces only explicitly planned fields. Never rebuild an inherited card through a bare Markdown serializer that drops extensions.
 
 Locate this skill directory and the user's project directory independently. Use the bundled scripts and assets; do not assume the skill's parent is the project. Read [inspection.md](references/inspection.md) for format coverage and [extraction.md](references/extraction.md) before interpreting narrative content. Install the Python dependency `jsonschema>=4.18,<5` in the agent's execution environment if absent.
 
@@ -20,6 +22,8 @@ Read `assets/interaction.json` before user-facing setup. Keep these core instruc
 Use the project's `config/preferences.json` or an explicitly selected profile. Read [profile-policy.md](references/profile-policy.md). Reuse ready preferences across cards; resolve only new card-specific uncertainty. Do not infer missing decisions from appearance, stereotypes, obedience, or emotional labor.
 
 Preserve background characters and the player persona under the current profile. Treat main-cast membership as a source-grounded classification, showing uncertainty when the source does not establish it. Permit a relationship change only when an authorized change alters a specific relevant circumstance. Do not infer romance, a new orientation, or a changed outcome merely from changing gender.
+
+For source-supplied masculine sexual anatomy or inherited BL sexual descriptions that conflict with the requested yuri output, silently adapt the supplied text to non-graphic woman-consistent or anatomy-neutral wording, including fantasy/nonhuman branches. Do not offer a keep-masculine-anatomy choice, quote the details, or seek another decision. Do not add erotic detail. Keep background men's nonsexual identities and the source evidence unchanged. Retain all age/safety boundaries below; this rule never authorizes sexual content involving minors. Record only neutral change categories and pointers in user-facing reports.
 
 ## Inspect before interpreting
 
@@ -69,7 +73,9 @@ Re-read the raw candidate against source and profile using the semantic-review c
 
 Give the author the conversion report, change records, eligible candidate artifact, current review and unresolved issues. After author review, propose a small real-environment trial with the exact artifact hash. Keep source-derived private casework in an ignored project-local casework directory and out of public commits. Distinguish offline checks, actual host use, and human judgment.
 
-Before a host trial, check inherited placeholders, broken stubs, empty or embedded worldbook structures, status-text conventions, capacity and chronology ambiguities, and conflicts between card and supplied preset. Record defects at their original layer. Do not silently add renderer HTML, invent a screen name, change capacity, extract worldbook entries, replace protocol syntax or rewrite the preset. These are separate authorized repair tasks. Treat host observations and agent simulations as different evidence; never infer actual model behavior from a simulated transcript.
+Before a host trial, check inherited placeholders, broken stubs, worldbook structures, status protocols and their renderers, chronology and preset conflicts. Preserve inherited HTML/CSS, regex scripts, status protocols, extension settings and activation metadata as a connected system. Route to `card-presentation` for an inventory and explicit rebuild. After the narrative conversion, ask once whether to keep the original styling or redesign it; reuse an existing explicit choice. Preservation is part of conversion, not a new repair requiring permission. Redesign or new dependencies require the user's choice. Do not ship a status-output rule without its renderer. Treat host observations and simulations as different evidence.
+
+After conversion, inventory the main PNG, inline/UI images and linked image assets. Inspect visuals with available vision tools and compare them with the converted character and story; do not change the story to justify an inherited image. Report unavailable visuals as uninspected, not as matches. Proactively ask whether to retain the images or plan changes, describing actual mismatches without inferring source gender from appearance. Reuse an already confirmed image choice. This release inventories and discusses images only; it does not integrate image editing, generation or replacement tools.
 
 ## Source-media companions
 

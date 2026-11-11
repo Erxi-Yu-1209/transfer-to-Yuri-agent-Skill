@@ -305,6 +305,23 @@
         "type": "string"
       },
       "uniqueItems": true
+    },
+    "partial_source_authorization": {
+      "type": "object",
+      "properties": {
+        "basis": {
+          "const": "explicit_user_request"
+        },
+        "instruction": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "basis",
+        "instruction"
+      ],
+      "additionalProperties": false
     }
   },
   "required": [
