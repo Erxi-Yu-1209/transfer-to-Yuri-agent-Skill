@@ -1,0 +1,275 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "profile_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "ready"
+      ]
+    },
+    "definition": {
+      "type": "object",
+      "properties": {
+        "womanhood_policy": {
+          "enum": [
+            "author_defined_inclusive",
+            "human_explicitly_female",
+            "custom",
+            null
+          ]
+        },
+        "custom_criteria": {
+          "type": "string"
+        },
+        "allowed_dynamics": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "romance",
+              "friendship",
+              "neutral",
+              "rivalry",
+              "hostility",
+              "kinship"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "infer_gender_from_stereotypes": {
+          "const": false
+        }
+      },
+      "required": [
+        "womanhood_policy",
+        "custom_criteria",
+        "allowed_dynamics",
+        "infer_gender_from_stereotypes"
+      ],
+      "additionalProperties": false
+    },
+    "transformation": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "enum": [
+            "named_characters",
+            "main_cast",
+            "entire_cast",
+            null
+          ]
+        },
+        "selected_character_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "uniqueItems": true
+        },
+        "excluded_character_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "uniqueItems": true
+        },
+        "player_persona": {
+          "enum": [
+            "preserve",
+            "explicitly_authorized"
+          ]
+        },
+        "protected_anchors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "scope",
+        "selected_character_ids",
+        "excluded_character_ids",
+        "player_persona",
+        "protected_anchors"
+      ],
+      "additionalProperties": false
+    },
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "outcome_policy": {
+          "enum": [
+            "preserve_outcomes",
+            "rederive_if_causal",
+            "explicit_pairing_targets",
+            null
+          ]
+        },
+        "pairing_targets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "a": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "b": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "target_dynamic": {
+                "enum": [
+                  "romance",
+                  "friendship",
+                  "neutral",
+                  "rivalry",
+                  "hostility",
+                  "kinship"
+                ]
+              }
+            },
+            "required": [
+              "a",
+              "b",
+              "target_dynamic"
+            ],
+            "additionalProperties": false
+          },
+          "uniqueItems": true
+        },
+        "infer_romance_from_hostility": {
+          "const": false
+        },
+        "preserve_uncertainty": {
+          "const": true
+        }
+      },
+      "required": [
+        "outcome_policy",
+        "pairing_targets",
+        "infer_romance_from_hostility",
+        "preserve_uncertainty"
+      ],
+      "additionalProperties": false
+    },
+    "workflow": {
+      "enum": [
+        "minimal-change",
+        "pairing-focused",
+        "character-focused",
+        "world-focused"
+      ]
+    },
+    "narrative_language": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    }
+  },
+  "required": [
+    "schema_version",
+    "profile_id",
+    "status",
+    "definition",
+    "transformation",
+    "relationships",
+    "workflow",
+    "narrative_language"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Yuri Card Workbench saved profile",
+  "description": "Drafts may retain three null decisions. Ready profiles resolve them; run-specific targets are checked separately.",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ready"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "definition": {
+            "properties": {
+              "womanhood_policy": {
+                "enum": [
+                  "author_defined_inclusive",
+                  "human_explicitly_female",
+                  "custom"
+                ]
+              }
+            }
+          },
+          "transformation": {
+            "properties": {
+              "scope": {
+                "enum": [
+                  "named_characters",
+                  "main_cast",
+                  "entire_cast"
+                ]
+              }
+            }
+          },
+          "relationships": {
+            "properties": {
+              "outcome_policy": {
+                "enum": [
+                  "preserve_outcomes",
+                  "rederive_if_causal",
+                  "explicit_pairing_targets"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "definition": {
+            "properties": {
+              "womanhood_policy": {
+                "const": "custom"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "definition": {
+            "properties": {
+              "custom_criteria": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

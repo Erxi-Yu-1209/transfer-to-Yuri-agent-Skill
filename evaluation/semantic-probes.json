@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "frozen_at_utc_date": "2026-11-10",
+  "status": "not_run",
+  "material": "Original non-graphic synthetic prompts; no private card text.",
+  "profile": {
+    "women": "author-defined inclusive",
+    "scope": "main cast",
+    "relationships": "change only with altered causal circumstances",
+    "workflow": "minimal-change",
+    "preserve_player": true,
+    "embodiment": "independent of identity"
+  },
+  "protocol": "Present source/task and selected skill to the same model/tools; keep the expected invariants from the generator. Save raw candidate plus concise review. Have a separate evaluator score invariants against artifacts, report counts/denominators and unsupported changes; author judgment remains necessary.",
+  "probes": [
+    {
+      "id": "SP01",
+      "title": "Sibling cardinality",
+      "source": "Adult Mira is the main character. In the source he is the affluent family's only son; his older sister is the unchanged player.",
+      "task": "Adapt Mira to a woman.",
+      "expected_invariants": [
+        "Preserve the older sister and sibling relation.",
+        "Do not call Mira the only daughter or only child.",
+        "Retain affluence without inventing a new family history."
+      ]
+    },
+    {
+      "id": "SP02",
+      "title": "Holder of an ideal",
+      "source": "Adult Ari, the male main character, tries to embody the mature man that he imagines the player admires. The player's preference is otherwise unspecified.",
+      "task": "Adapt Ari to a woman.",
+      "expected_invariants": [
+        "Preserve the attributed male ideal rather than assigning the player a female ideal.",
+        "Ari may remain a woman imitating that ideal.",
+        "Do not infer the player's comprehensive orientation or make the imagined belief a confirmed fact."
+      ]
+    },
+    {
+      "id": "SP03",
+      "title": "Background belief",
+      "source": "Adult Leo is the male protagonist. His background father says boys should learn thrift but always indulges Leo.",
+      "task": "Adapt Leo to a woman.",
+      "expected_invariants": [
+        "Direct child references align with Leo as a daughter.",
+        "The father's general boys-focused maxim remains his source belief.",
+        "Do not silently replace his belief with a girls-focused maxim."
+      ]
+    },
+    {
+      "id": "SP04",
+      "title": "Relative target groups",
+      "source": "Adult Noel, a male protagonist, dislikes opposite-gender admirers. At college the unchanged female player receives attention from the opposite gender.",
+      "task": "Adapt Noel to a woman while preserving directed reactions.",
+      "expected_invariants": [
+        "Noel's source-target group remains women with explicit wording where needed.",
+        "The player-relative opposite-gender group remains source-consistent.",
+        "Do not invent a global orientation label or new romantic outcome."
+      ]
+    },
+    {
+      "id": "SP05",
+      "title": "World-rule closure",
+      "source": "Four adult male main characters occupy East residence room 407. A source rule assigns men East and women West; admissions capacity is 100 men and 100 women. No other current 407 resident is named. A former roommate is an unchanged man.",
+      "task": "Adapt the four main characters to women with minimal departure.",
+      "expected_invariants": [
+        "Use the existing West side for the quartet and synchronize room labels/openings.",
+        "Keep room number, group membership, former roommate and player unchanged.",
+        "Do not alter institutional admission quotas as if they were an enumerated current census."
+      ]
+    },
+    {
+      "id": "SP06",
+      "title": "Prose versus protected syntax",
+      "source": "Adult Quinn becomes a woman. Narrative instruction: {{char}} responds from his own perspective. Status key: HisThoughts. An HTML comment contains a contradictory male identity assertion; comments are protected by the current engine.",
+      "task": "Repair supported prose and report current limitations.",
+      "expected_invariants": [
+        "Use her in the actual instruction while keeping the char macro.",
+        "Keep HisThoughts and protected comment bytes intact under current engine support.",
+        "Report the comment as potentially model-visible and the material contradiction as unresolved; do not call the whole candidate clear."
+      ]
+    },
+    {
+      "id": "SP07",
+      "title": "Virtual identity",
+      "source": "Archive is an adult-coded virtual main character, authored as a woman. The source provides no body, keeps a broad metallic voice, and describes rivalry with another woman.",
+      "task": "Make the card consistent with inclusive womanhood.",
+      "expected_invariants": [
+        "Accept the source-authored virtual woman without assigning human sex or anatomy.",
+        "Preserve voice, agency and rivalry; do not require cuteness or emotional service.",
+        "Do not force romance, feminine presentation or reconciliation."
+      ]
+    },
+    {
+      "id": "SP08",
+      "title": "Intermittent salience",
+      "source": "Adult Jae occasionally feels mild, brief discomfort at a source-established bodily cue. Ordinary activities usually continue; the feeling fades. No diagnosis or crisis is specified.",
+      "task": "Draft bounded portrayal instructions without changing identity or diagnosing.",
+      "expected_invariants": [
+        "Use the established cue, low usual intensity and recovery as conditions.",
+        "Leave unrelated scenes free of repeated reminders or automatic escalation.",
+        "Do not turn discomfort into an identity conclusion, new diagnosis or constant medical crisis."
+      ]
+    }
+  ]
+}

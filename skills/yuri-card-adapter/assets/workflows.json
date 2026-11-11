@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "priority_semantics": "Qualitative planning and review emphasis; not measured model-reasoning percentages.",
+  "common_obligations": [
+    "complete supported-region inventory",
+    "source-linked extraction",
+    "effective-profile validation",
+    "protected-anchor preservation",
+    "cross-layer causal consistency review",
+    "artifact and change-scope validation"
+  ],
+  "presets": {
+    "minimal-change": {
+      "label": "最小改写 / Minimal change",
+      "primary_focus": "smallest authorized narrative departure",
+      "planning_order": ["protected anchors", "required identity edits", "affected relationship and world constraints"],
+      "review_emphasis": ["unintended changes", "source fidelity", "technical preservation"]
+    },
+    "pairing-focused": {
+      "label": "关系优先 / Pairing focused",
+      "primary_focus": "selected interpersonal connections",
+      "planning_order": ["relationship targets and preserved dynamics", "individual motivations", "supporting world constraints"],
+      "review_emphasis": ["directed relationship consistency", "agency", "causal support"]
+    },
+    "character-focused": {
+      "label": "角色优先 / Character focused",
+      "primary_focus": "recognizable individuals",
+      "planning_order": ["identity and protected personality", "history and motivations", "relationships and world constraints"],
+      "review_emphasis": ["character recognition", "independent goals", "situational variation"]
+    },
+    "world-focused": {
+      "label": "世界优先 / World focused",
+      "primary_focus": "institutions, setting constraints, and game rules",
+      "planning_order": ["affected world constraints", "character roles and access", "relationship consequences"],
+      "review_emphasis": ["world consistency", "playability", "unintended systemic consequences"]
+    }
+  }
+}

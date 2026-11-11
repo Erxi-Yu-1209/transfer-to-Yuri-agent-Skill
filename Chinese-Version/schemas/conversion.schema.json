@@ -1,0 +1,148 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "status": {
+      "const": "review_candidate"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "profile_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "selected_entity_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "protected_pointers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "uniqueItems": true,
+      "minItems": 0
+    },
+    "review_notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "patches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "pointer": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "expected_value_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "entity_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          },
+          "source_claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "edits": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "start": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "end": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "expected": {
+                  "type": "string"
+                },
+                "replacement": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "start",
+                "end",
+                "expected",
+                "replacement"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "id",
+          "pointer",
+          "expected_value_sha256",
+          "entity_ids",
+          "source_claim_ids",
+          "reason",
+          "edits"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "status",
+    "source_sha256",
+    "profile_sha256",
+    "selected_entity_ids",
+    "protected_pointers",
+    "review_notes",
+    "patches"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Source-addressed narrative transformation plan",
+  "description": "Reviewed exact spans in original code-point coordinates. This validates scope and preservation, not semantic correctness or runtime behavior."
+}
