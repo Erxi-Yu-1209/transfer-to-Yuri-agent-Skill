@@ -4,6 +4,7 @@
   "files": [
     ".gitignore",
     "AGENT_HANDOFF.md",
+    "LICENSE",
     "NOTICE.md",
     "PROJECT_SPEC.md",
     "README.md",

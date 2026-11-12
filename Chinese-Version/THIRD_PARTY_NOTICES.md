@@ -1,5 +1,21 @@
 # Third-party implementation and method attribution
 
+## Project licensing boundary
+
+The repository uses a split licensing boundary. The MIT grant in `LICENSE`
+applies only to newly written extension code, instructions, tests and
+documentation. It does not relicense third-party or pre-existing material.
+
+| Material | License and treatment |
+| --- | --- |
+| Newly written extension code, instructions, tests and documentation | MIT |
+| Vendored Foreverse exporter | Its existing MIT license and attribution remain intact; code remains unchanged |
+| TavernWeave components | Retain their existing PolyForm Noncommercial terms and required notices; the extension's MIT license does not cover them |
+| Existing Workbench v1.2.0 original files | Their licensing status remains unchanged; any proposed reuse will be flagged explicitly before copying |
+
+The sections below record the actual upstream code reuse, immutable blob
+identity and method references that this boundary preserves.
+
 ## Foreverse serializer and PNG writer — code reuse
 
 - Upstream: https://github.com/foreverse-app/character-card-skills
@@ -26,7 +42,9 @@ The same code and license are included in the generated standalone skill bundles
 
 `shared/spans.py` copies the unchanged protected-syntax and exact-span functions from Workbench v0.5.0 `apply_plan.py`. Existing JSON inspection, profiles, guarded conversion and private case verification remain in place. These are project-owned implementation reuse, not a third-party license grant.
 
-Original Workbench files still have no selected project-wide license. This notice does not impose an inferred upstream license on them.
+Original Workbench files still have no selected project-wide license: the
+repository `LICENSE` does not select one for them, and their status remains
+unchanged. This notice does not impose an inferred upstream license on them.
 
 ## Additional method references reviewed for 1.2.0
 

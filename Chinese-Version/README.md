@@ -83,4 +83,8 @@
 
 把成品导入 SillyTavern，试用后在对话中说明哪些地方符合预期、哪些需要修改。文件和记录由智能体维护，再按你的反馈制作下一版。
 
+## 许可
+
+本仓库采用分层许可边界。新编写的扩展代码、说明、测试与文档采用 MIT 许可；内置的 Foreverse 导出器保留其原有 MIT 许可与署名；TavernWeave 组件保留其 PolyForm Noncommercial 条款与必要声明；现有 Workbench v1.2.0 原始文件的许可状态保持不变。完整边界见 [LICENSE](LICENSE) 与 [致谢和许可说明](THIRD_PARTY_NOTICES.md)。
+
 详细操作见 [技术参考](docs/TECHNICAL_USAGE.md)；来源与第三方许可见 [致谢和许可说明](THIRD_PARTY_NOTICES.md)。

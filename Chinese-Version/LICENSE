@@ -1,0 +1,42 @@
+# Project license
+
+Copyright (c) 2026 Erxi-Yu-1209 and the Yuri Card Workbench contributors
+
+This repository is a composite work with a split licensing boundary. Different
+materials are governed by different terms:
+
+| Material | License and treatment |
+| --- | --- |
+| Newly written extension code, instructions, tests and documentation | MIT, under the terms reproduced below |
+| Vendored Foreverse exporter (`shared/vendor/card_md_to_st.py` and its copies) | Its existing MIT license and attribution remain intact; the code remains unchanged |
+| TavernWeave components | Retain their existing PolyForm Noncommercial terms and required notices; the MIT license below does not cover them |
+| Existing Workbench v1.2.0 original files | Their licensing status remains unchanged; any proposed reuse will be flagged explicitly before copying |
+
+The MIT grant below applies only to the first category. It does not relicense,
+supersede or extend the terms of the vendored Foreverse exporter, TavernWeave
+components, or existing Workbench v1.2.0 original files. Where a file is not
+clearly within the first category, it is not licensed under MIT by this
+document until its status is clarified in writing.
+
+Files outside the MIT grant are identified in `THIRD_PARTY_NOTICES.md`,
+`NOTICE.md`, and the notices shipped with the affected components.
+
+## MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

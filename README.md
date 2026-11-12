@@ -85,4 +85,8 @@ You can describe your goal in ordinary language and let the agent choose the app
 
 Try the finished card in SillyTavern, then tell the agent what worked and what you want changed. Give feedback in the conversation; the agent maintains the files and prepares the next revision.
 
+## License
+
+This repository uses a split licensing boundary. Newly written extension code, instructions, tests and documentation are licensed under MIT. The vendored Foreverse exporter keeps its existing MIT license and attribution, TavernWeave components keep their PolyForm Noncommercial terms and notices, and existing Workbench v1.2.0 original files keep their unchanged licensing status. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the full boundary.
+
 [Technical reference](docs/TECHNICAL_USAGE.md) · [Credits and third-party license notes](THIRD_PARTY_NOTICES.md)

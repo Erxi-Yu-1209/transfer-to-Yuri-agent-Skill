@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — licensing boundary
+
+Established the project licensing boundary: MIT applies only to newly written extension code, instructions, tests and documentation; the vendored Foreverse exporter keeps its MIT license and attribution unchanged; TavernWeave components keep their PolyForm Noncommercial terms and notices; existing Workbench v1.2.0 original files keep their unchanged licensing status. Added `LICENSE`, registered it in the public allowlist, and linked the boundary from both READMEs and the notices.
+
 ## 1.2.0
 
 Default novel processing to all supplied chapters; require actual user authorization for excerpts and partial builds. Add presentation inventory and source-preserving authored rebuilds for new openings and rewritten fields. Add a presentation companion, post-conversion styling choice and image/story review without image-editing integration. Quietly neutralize conflicting supplied masculine anatomy using non-graphic phrasing. Reorganize English/Chinese README entry prompts; withdraw the miniature samples and retain real-use feedback limits.
